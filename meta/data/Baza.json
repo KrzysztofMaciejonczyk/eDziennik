@@ -1,0 +1,2370 @@
+{
+  "info": {
+    "title": "Baza",
+    "x-type": "odata",
+    "x-connector": "postgresql"
+  },
+  "definitions": {
+    "DataOpi": {
+      "x-table": "public.data_opis",
+      "resource": "DataOpis",
+      "required": [],
+      "properties": {
+        "data_opis_id": {
+          "x-key": true,
+          "x-default-sql": "nextval('data_opis_data_opis_id_seq'::regclass)",
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "DataOpi",
+              "name": "Uwagas",
+              "type": "Uwaga"
+            },
+            {
+              "inversePropertyName": "DataOpi",
+              "name": "Ocenas",
+              "type": "Ocena"
+            },
+            {
+              "inversePropertyName": "DataOpi",
+              "name": "Obecnoscs",
+              "type": "Obecnosc"
+            }
+          ]
+        },
+        "data": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "opis": {
+          "type": "string",
+          "length": 200
+        },
+        "Uwagas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Uwaga"
+          }
+        },
+        "Ocenas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Ocena"
+          }
+        },
+        "Obecnoscs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Obecnosc"
+          }
+        }
+      }
+    },
+    "Klasa": {
+      "x-table": "public.klasa",
+      "resource": "Klasas",
+      "required": [],
+      "properties": {
+        "Nauczyciel": {
+          "type": "object",
+          "$ref": "#/definitions/Nauczyciel"
+        },
+        "nauczyciel_id": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "nauczyciel",
+            "parentEntityType": "Nauczyciel",
+            "type": "Nauczyciel",
+            "principalKey": "nauczyciel_id",
+            "name": "Nauczyciel",
+            "textProperty": "nauczyciel_id",
+            "navigationProperty": "Klasas"
+          }
+        },
+        "klasa_id": {
+          "x-key": true,
+          "x-default-sql": "nextval('klasa_klasa_id_seq'::regclass)",
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Klasa",
+              "name": "Uczens",
+              "type": "Uczen"
+            },
+            {
+              "inversePropertyName": "Klasa",
+              "name": "Przedmiots",
+              "type": "Przedmiot"
+            }
+          ]
+        },
+        "nazwa": {
+          "type": "string",
+          "length": 2
+        },
+        "Uczens": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Uczen"
+          }
+        },
+        "Przedmiots": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Przedmiot"
+          }
+        }
+      }
+    },
+    "Nauczyciel": {
+      "x-table": "public.nauczyciel",
+      "resource": "Nauczyciels",
+      "required": [],
+      "properties": {
+        "Osoba": {
+          "type": "object",
+          "$ref": "#/definitions/Osoba"
+        },
+        "osoba_id": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "osoba",
+            "parentEntityType": "Osoba",
+            "type": "Osoba",
+            "principalKey": "osoba_id",
+            "name": "Osoba",
+            "textProperty": "imie",
+            "navigationProperty": "Nauczyciels"
+          }
+        },
+        "nauczyciel_id": {
+          "x-key": true,
+          "x-default-sql": "nextval('nauczyciel_nauczyciel_id_seq'::regclass)",
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Nauczyciel",
+              "name": "Klasas",
+              "type": "Klasa"
+            },
+            {
+              "inversePropertyName": "Nauczyciel",
+              "name": "Przedmiots",
+              "type": "Przedmiot"
+            },
+            {
+              "inversePropertyName": "Nauczyciel",
+              "name": "Uwagas",
+              "type": "Uwaga"
+            },
+            {
+              "inversePropertyName": "Nauczyciel",
+              "name": "Ocenas",
+              "type": "Ocena"
+            }
+          ]
+        },
+        "Klasas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Klasa"
+          }
+        },
+        "Przedmiots": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Przedmiot"
+          }
+        },
+        "Uwagas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Uwaga"
+          }
+        },
+        "Ocenas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Ocena"
+          }
+        }
+      }
+    },
+    "Obecnosc": {
+      "x-table": "public.obecnosc",
+      "resource": "Obecnoscs",
+      "required": [],
+      "properties": {
+        "czy_byl": {
+          "type": "boolean"
+        },
+        "Uczen": {
+          "type": "object",
+          "$ref": "#/definitions/Uczen"
+        },
+        "uczen_id": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "uczen",
+            "parentEntityType": "Uczen",
+            "type": "Uczen",
+            "principalKey": "uczen_id",
+            "name": "Uczen",
+            "textProperty": "adres",
+            "navigationProperty": "Obecnoscs"
+          }
+        },
+        "DataOpi": {
+          "type": "object",
+          "$ref": "#/definitions/DataOpi"
+        },
+        "data_opis_id": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "data_opis",
+            "parentEntityType": "DataOpi",
+            "type": "DataOpi",
+            "principalKey": "data_opis_id",
+            "name": "DataOpi",
+            "textProperty": "opis",
+            "navigationProperty": "Obecnoscs"
+          }
+        },
+        "ocena_id": {
+          "x-key": true,
+          "x-default-sql": "nextval('obecnosc_ocena_id_seq'::regclass)",
+          "x-nullable": false,
+          "type": "integer"
+        }
+      }
+    },
+    "Ocena": {
+      "x-table": "public.ocena",
+      "resource": "Ocenas",
+      "required": [],
+      "properties": {
+        "ocena_n": {
+          "type": "integer"
+        },
+        "Nauczyciel": {
+          "type": "object",
+          "$ref": "#/definitions/Nauczyciel"
+        },
+        "nauczyciel_id": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "nauczyciel",
+            "parentEntityType": "Nauczyciel",
+            "type": "Nauczyciel",
+            "principalKey": "nauczyciel_id",
+            "name": "Nauczyciel",
+            "textProperty": "nauczyciel_id",
+            "navigationProperty": "Ocenas"
+          }
+        },
+        "Uczen": {
+          "type": "object",
+          "$ref": "#/definitions/Uczen"
+        },
+        "uczen_id": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "uczen",
+            "parentEntityType": "Uczen",
+            "type": "Uczen",
+            "principalKey": "uczen_id",
+            "name": "Uczen",
+            "textProperty": "adres",
+            "navigationProperty": "Ocenas"
+          }
+        },
+        "DataOpi": {
+          "type": "object",
+          "$ref": "#/definitions/DataOpi"
+        },
+        "data_opis_id": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "data_opis",
+            "parentEntityType": "DataOpi",
+            "type": "DataOpi",
+            "principalKey": "data_opis_id",
+            "name": "DataOpi",
+            "textProperty": "opis",
+            "navigationProperty": "Ocenas"
+          }
+        },
+        "ocena_id": {
+          "x-key": true,
+          "x-default-sql": "nextval('ocena_ocena_id_seq'::regclass)",
+          "x-nullable": false,
+          "type": "integer"
+        }
+      }
+    },
+    "Osoba": {
+      "x-table": "public.osoba",
+      "resource": "Osobas",
+      "required": [],
+      "properties": {
+        "osoba_id": {
+          "x-key": true,
+          "x-default-sql": "nextval('osoba_osoba_id_seq'::regclass)",
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Osoba",
+              "name": "Rodzics",
+              "type": "Rodzic"
+            },
+            {
+              "inversePropertyName": "Osoba",
+              "name": "Nauczyciels",
+              "type": "Nauczyciel"
+            },
+            {
+              "inversePropertyName": "Osoba",
+              "name": "Uczens",
+              "type": "Uczen"
+            }
+          ]
+        },
+        "imie": {
+          "type": "string",
+          "length": 50
+        },
+        "email": {
+          "type": "string",
+          "length": 100
+        },
+        "nazwisko": {
+          "type": "string",
+          "length": 50
+        },
+        "telefon": {
+          "type": "string",
+          "length": 9
+        },
+        "haslo": {
+          "type": "string",
+          "length": 100
+        },
+        "Rodzics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Rodzic"
+          }
+        },
+        "Nauczyciels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Nauczyciel"
+          }
+        },
+        "Uczens": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Uczen"
+          }
+        }
+      }
+    },
+    "Przedmiot": {
+      "x-table": "public.przedmiot",
+      "resource": "Przedmiots",
+      "required": [],
+      "properties": {
+        "Nauczyciel": {
+          "type": "object",
+          "$ref": "#/definitions/Nauczyciel"
+        },
+        "nauczyciel_id": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "nauczyciel",
+            "parentEntityType": "Nauczyciel",
+            "type": "Nauczyciel",
+            "principalKey": "nauczyciel_id",
+            "name": "Nauczyciel",
+            "textProperty": "nauczyciel_id",
+            "navigationProperty": "Przedmiots"
+          }
+        },
+        "Klasa": {
+          "type": "object",
+          "$ref": "#/definitions/Klasa"
+        },
+        "klasa_id": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "klasa",
+            "parentEntityType": "Klasa",
+            "type": "Klasa",
+            "principalKey": "klasa_id",
+            "name": "Klasa",
+            "textProperty": "nazwa",
+            "navigationProperty": "Przedmiots"
+          }
+        },
+        "przedmiot_id": {
+          "x-key": true,
+          "x-default-sql": "nextval('przedmiot_przedmiot_id_seq'::regclass)",
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "nazwa": {
+          "type": "string",
+          "length": 50
+        }
+      }
+    },
+    "Rodzic": {
+      "x-table": "public.rodzic",
+      "resource": "Rodzics",
+      "required": [],
+      "properties": {
+        "Osoba": {
+          "type": "object",
+          "$ref": "#/definitions/Osoba"
+        },
+        "osoba_id": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "osoba",
+            "parentEntityType": "Osoba",
+            "type": "Osoba",
+            "principalKey": "osoba_id",
+            "name": "Osoba",
+            "textProperty": "imie",
+            "navigationProperty": "Rodzics"
+          }
+        },
+        "rodzic_id": {
+          "x-key": true,
+          "x-default-sql": "nextval('rodzic_rodzic_id_seq'::regclass)",
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Rodzic",
+              "name": "Uczens",
+              "type": "Uczen"
+            }
+          ]
+        },
+        "Uczens": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Uczen"
+          }
+        }
+      }
+    },
+    "Uczen": {
+      "x-table": "public.uczen",
+      "resource": "Uczens",
+      "required": [],
+      "properties": {
+        "data_urodzenia": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Osoba": {
+          "type": "object",
+          "$ref": "#/definitions/Osoba"
+        },
+        "osoba_id": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "osoba",
+            "parentEntityType": "Osoba",
+            "type": "Osoba",
+            "principalKey": "osoba_id",
+            "name": "Osoba",
+            "textProperty": "imie",
+            "navigationProperty": "Uczens"
+          }
+        },
+        "Rodzic": {
+          "type": "object",
+          "$ref": "#/definitions/Rodzic"
+        },
+        "rodzic_id": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "rodzic",
+            "parentEntityType": "Rodzic",
+            "type": "Rodzic",
+            "principalKey": "rodzic_id",
+            "name": "Rodzic",
+            "textProperty": "rodzic_id",
+            "navigationProperty": "Uczens"
+          }
+        },
+        "Klasa": {
+          "type": "object",
+          "$ref": "#/definitions/Klasa"
+        },
+        "klasa_id": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "klasa",
+            "parentEntityType": "Klasa",
+            "type": "Klasa",
+            "principalKey": "klasa_id",
+            "name": "Klasa",
+            "textProperty": "nazwa",
+            "navigationProperty": "Uczens"
+          }
+        },
+        "uczen_id": {
+          "x-key": true,
+          "x-default-sql": "nextval('uczen_uczen_id_seq'::regclass)",
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Uczen",
+              "name": "Uwagas",
+              "type": "Uwaga"
+            },
+            {
+              "inversePropertyName": "Uczen",
+              "name": "Ocenas",
+              "type": "Ocena"
+            },
+            {
+              "inversePropertyName": "Uczen",
+              "name": "Obecnoscs",
+              "type": "Obecnosc"
+            }
+          ]
+        },
+        "adres": {
+          "type": "string",
+          "length": 100
+        },
+        "Uwagas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Uwaga"
+          }
+        },
+        "Ocenas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Ocena"
+          }
+        },
+        "Obecnoscs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Obecnosc"
+          }
+        }
+      }
+    },
+    "Uwaga": {
+      "x-table": "public.uwaga",
+      "resource": "Uwagas",
+      "required": [],
+      "properties": {
+        "Nauczyciel": {
+          "type": "object",
+          "$ref": "#/definitions/Nauczyciel"
+        },
+        "nauczyciel_id": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "nauczyciel",
+            "parentEntityType": "Nauczyciel",
+            "type": "Nauczyciel",
+            "principalKey": "nauczyciel_id",
+            "name": "Nauczyciel",
+            "textProperty": "nauczyciel_id",
+            "navigationProperty": "Uwagas"
+          }
+        },
+        "Uczen": {
+          "type": "object",
+          "$ref": "#/definitions/Uczen"
+        },
+        "uczen_id": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "uczen",
+            "parentEntityType": "Uczen",
+            "type": "Uczen",
+            "principalKey": "uczen_id",
+            "name": "Uczen",
+            "textProperty": "adres",
+            "navigationProperty": "Uwagas"
+          }
+        },
+        "DataOpi": {
+          "type": "object",
+          "$ref": "#/definitions/DataOpi"
+        },
+        "data_opis_id": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "data_opis",
+            "parentEntityType": "DataOpi",
+            "type": "DataOpi",
+            "principalKey": "data_opis_id",
+            "name": "DataOpi",
+            "textProperty": "opis",
+            "navigationProperty": "Uwagas"
+          }
+        },
+        "uwaga_id": {
+          "x-key": true,
+          "x-default-sql": "nextval('uwaga_uwaga_id_seq'::regclass)",
+          "x-nullable": false,
+          "type": "integer"
+        }
+      }
+    }
+  },
+  "paths": {
+    "/DataOpis": {
+      "get": {
+        "operationId": "getDataOpis",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/DataOpi"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createDataOpi",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "DataOpi",
+            "schema": {
+              "$ref": "#/definitions/DataOpi"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/DataOpi"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Klasas": {
+      "get": {
+        "operationId": "getKlasas",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Klasa"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createKlasa",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Klasa",
+            "schema": {
+              "$ref": "#/definitions/Klasa"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Klasa"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Nauczyciels": {
+      "get": {
+        "operationId": "getNauczyciels",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Nauczyciel"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createNauczyciel",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Nauczyciel",
+            "schema": {
+              "$ref": "#/definitions/Nauczyciel"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Nauczyciel"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Obecnoscs": {
+      "get": {
+        "operationId": "getObecnoscs",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Obecnosc"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createObecnosc",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Obecnosc",
+            "schema": {
+              "$ref": "#/definitions/Obecnosc"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Obecnosc"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Ocenas": {
+      "get": {
+        "operationId": "getOcenas",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Ocena"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createOcena",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Ocena",
+            "schema": {
+              "$ref": "#/definitions/Ocena"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Ocena"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Osobas": {
+      "get": {
+        "operationId": "getOsobas",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Osoba"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createOsoba",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Osoba",
+            "schema": {
+              "$ref": "#/definitions/Osoba"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Osoba"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Przedmiots": {
+      "get": {
+        "operationId": "getPrzedmiots",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Przedmiot"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createPrzedmiot",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Przedmiot",
+            "schema": {
+              "$ref": "#/definitions/Przedmiot"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Przedmiot"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Rodzics": {
+      "get": {
+        "operationId": "getRodzics",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Rodzic"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createRodzic",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Rodzic",
+            "schema": {
+              "$ref": "#/definitions/Rodzic"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Rodzic"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Uczens": {
+      "get": {
+        "operationId": "getUczens",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Uczen"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createUczen",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Uczen",
+            "schema": {
+              "$ref": "#/definitions/Uczen"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Uczen"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Uwagas": {
+      "get": {
+        "operationId": "getUwagas",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Uwaga"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createUwaga",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Uwaga",
+            "schema": {
+              "$ref": "#/definitions/Uwaga"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Uwaga"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/DataOpis({data_opis_id})": {
+      "delete": {
+        "operationId": "deleteDataOpi",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "data_opis_id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getDataOpiBydata_opis_id",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "data_opis_id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/DataOpi"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateDataOpi",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "data_opis_id",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "DataOpi",
+            "schema": {
+              "$ref": "#/definitions/DataOpi"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Klasas({klasa_id})": {
+      "delete": {
+        "operationId": "deleteKlasa",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "klasa_id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getKlasaByklasa_id",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "klasa_id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Klasa"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateKlasa",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "klasa_id",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Klasa",
+            "schema": {
+              "$ref": "#/definitions/Klasa"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Nauczyciels({nauczyciel_id})": {
+      "delete": {
+        "operationId": "deleteNauczyciel",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "nauczyciel_id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getNauczycielBynauczyciel_id",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "nauczyciel_id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Nauczyciel"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateNauczyciel",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "nauczyciel_id",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Nauczyciel",
+            "schema": {
+              "$ref": "#/definitions/Nauczyciel"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Obecnoscs({ocena_id})": {
+      "delete": {
+        "operationId": "deleteObecnosc",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ocena_id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getObecnoscByocena_id",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "ocena_id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Obecnosc"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateObecnosc",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "ocena_id",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Obecnosc",
+            "schema": {
+              "$ref": "#/definitions/Obecnosc"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Ocenas({ocena_id})": {
+      "delete": {
+        "operationId": "deleteOcena",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ocena_id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getOcenaByocena_id",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "ocena_id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Ocena"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateOcena",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "ocena_id",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Ocena",
+            "schema": {
+              "$ref": "#/definitions/Ocena"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Osobas({osoba_id})": {
+      "delete": {
+        "operationId": "deleteOsoba",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "osoba_id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getOsobaByosoba_id",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "osoba_id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Osoba"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateOsoba",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "osoba_id",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Osoba",
+            "schema": {
+              "$ref": "#/definitions/Osoba"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Przedmiots({przedmiot_id})": {
+      "delete": {
+        "operationId": "deletePrzedmiot",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "przedmiot_id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getPrzedmiotByprzedmiot_id",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "przedmiot_id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Przedmiot"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updatePrzedmiot",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "przedmiot_id",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Przedmiot",
+            "schema": {
+              "$ref": "#/definitions/Przedmiot"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Rodzics({rodzic_id})": {
+      "delete": {
+        "operationId": "deleteRodzic",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "rodzic_id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getRodzicByrodzic_id",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "rodzic_id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Rodzic"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateRodzic",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "rodzic_id",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Rodzic",
+            "schema": {
+              "$ref": "#/definitions/Rodzic"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Uczens({uczen_id})": {
+      "delete": {
+        "operationId": "deleteUczen",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "uczen_id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getUczenByuczen_id",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "uczen_id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Uczen"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateUczen",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "uczen_id",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Uczen",
+            "schema": {
+              "$ref": "#/definitions/Uczen"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Uwagas({uwaga_id})": {
+      "delete": {
+        "operationId": "deleteUwaga",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "uwaga_id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getUwagaByuwaga_id",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "uwaga_id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Uwaga"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateUwaga",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "uwaga_id",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Uwaga",
+            "schema": {
+              "$ref": "#/definitions/Uwaga"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "basePath": "/odata/Baza",
+  "host": "localhost:5000",
+  "schemes": [
+    "http"
+  ]
+}

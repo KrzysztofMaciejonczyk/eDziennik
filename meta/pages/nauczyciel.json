@@ -1,0 +1,186 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "heading",
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "Nauczyciel"
+        },
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "name": "grid0",
+                  "allowDelete": true,
+                  "confirmDelete": true,
+                  "allowAdd": true,
+                  "allowFiltering": true,
+                  "allowMultiSorting": false,
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "count": "${getNauczycielsCount}",
+                  "data": "${getNauczycielsResult}",
+                  "events": {
+                    "loadData": [
+                      {
+                        "name": "Baza.getNauczyciels",
+                        "parameters": [
+                          {
+                            "name": "$top",
+                            "value": "event.top"
+                          },
+                          {
+                            "name": "$skip",
+                            "value": "event.skip"
+                          },
+                          {
+                            "name": "$count",
+                            "value": "event.top != null && event.skip != null"
+                          },
+                          {
+                            "name": "$filter",
+                            "value": "${event.filter}"
+                          },
+                          {
+                            "name": "$orderby",
+                            "value": "${event.orderby}"
+                          },
+                          {
+                            "name": "$expand",
+                            "value": "Klasas,Przedmiots,Uwagas,Ocenas,Osoba"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "name": "getNauczycielsResult",
+                            "type": "set",
+                            "value": "${result.value}"
+                          },
+                          {
+                            "name": "getNauczycielsCount",
+                            "type": "set",
+                            "value": "event.top != null && event.skip != null ? result['@odata.count'] : ${result.value.length}"
+                          }
+                        ],
+                        "type": "invoke",
+                        "error": [
+                          {
+                            "detail": "Unable to load Nauczyciels",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ]
+                      }
+                    ],
+                    "delete": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to delete Nauczyciel",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "Baza.deleteNauczyciel",
+                        "parameters": [
+                          {
+                            "name": "nauczyciel_id",
+                            "value": "${event.nauczyciel_id}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "detail": "Nauczyciel deleted!",
+                            "severity": "success",
+                            "summary": "Success",
+                            "type": "notify"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ],
+                    "add": [
+                      {
+                        "path": "add-nauczyciel",
+                        "type": "popup"
+                      }
+                    ],
+                    "rowSelect": [
+                      {
+                        "parameters": [
+                          {
+                            "name": "nauczyciel_id",
+                            "value": "${event.nauczyciel_id}"
+                          }
+                        ],
+                        "path": "edit-nauczyciel",
+                        "type": "popup"
+                      }
+                    ]
+                  },
+                  "title": "",
+                  "columns": [
+                    {
+                      "property": "osoba_id",
+                      "sortProperty": "Osoba.nazwisko",
+                      "filterProperty": "Osoba.nazwisko",
+                      "template": "${data.Osoba?.nazwisko}",
+                      "title": "Osoba",
+                      "type": "string"
+                    },
+                    {
+                      "property": "nauczyciel_id",
+                      "title": "Nauczyciel Id",
+                      "type": "integer"
+                    }
+                  ],
+                  "type": "grid",
+                  "confirmDeleteText": "Are you sure you want to delete this record?",
+                  "confirmDeleteTitle": "Confirmation",
+                  "confirmDeleteOkText": "Ok",
+                  "confirmDeleteCancelText": "Cancel",
+                  "emptyText": "No records to display.",
+                  "addText": "Add",
+                  "clearFilterText": "Clear",
+                  "applyFilterText": "Apply",
+                  "equalsText": "Equals",
+                  "notEqualsText": "Not equals",
+                  "lessThanText": "Less than",
+                  "lessThanOrEqualsText": "Less than or equals",
+                  "greaterThanText": "Greater than",
+                  "greaterThanOrEqualsText": "Greater than or equals",
+                  "endsWithText": "Ends with",
+                  "containsText": "Contains",
+                  "startsWithText": "Starts with"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "type": "execute",
+        "code": "this.grid0.load();"
+      }
+    ]
+  },
+  "name": "Nauczyciel",
+  "layout": "Main",
+  "access": [
+    "Authenticated"
+  ]
+}

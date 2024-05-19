@@ -1,0 +1,59 @@
+{
+  "dataSources": [
+    "Baza"
+  ],
+  "generator": "@radzen/angular-generator",
+  "https": false,
+  "layouts": [
+    "Login",
+    "Main"
+  ],
+  "logo": "",
+  "name": "eDziennik",
+  "navigation": [
+    "Osoba",
+    "Klasa",
+    "Nauczyciel"
+  ],
+  "pages": [
+    "Osoba",
+    "Add Osoba",
+    "Edit Osoba",
+    "Klasa",
+    "Add Klasa",
+    "Edit Klasa",
+    "Nauczyciel",
+    "Add Nauczyciel",
+    "Edit Nauczyciel",
+    "Application Users",
+    "Add Application Role",
+    "Application Roles",
+    "Register Application User",
+    "Edit Application User",
+    "Add Application User",
+    "Profile",
+    "Login",
+    "Unauthorized"
+  ],
+  "security": {
+    "autoGeneratePages": true,
+    "dataSource": "Baza",
+    "duration": 5,
+    "emailConfirmation": false,
+    "layout": "Main",
+    "loginLayout": "Login",
+    "loginPage": "Login",
+    "provider": "default",
+    "sessionRefresh": false,
+    "smtpFrom": "",
+    "smtpPassword": "",
+    "smtpSSL": false,
+    "smtpServer": "",
+    "smtpUser": ""
+  },
+  "serverLang": "cs",
+  "serverProject": true,
+  "serverVersion": "7",
+  "startPage": "Osoba",
+  "theme": "default"
+}

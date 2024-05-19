@@ -1,0 +1,215 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Nauczyciel",
+                              "component": "nauczyciel_id",
+                              "name": "nauczyciel_idLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getNauczycielsResult}",
+                              "textProperty": "nauczyciel_id",
+                              "valueProperty": "nauczyciel_id",
+                              "placeholder": "Choose Nauczyciel",
+                              "type": "dropdown",
+                              "name": "nauczyciel_id",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${klasa.nauczyciel_id}",
+                              "multipleItemsSelectedText": "{0} items selected",
+                              "emptyFilterText": "No results found"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Nazwa",
+                              "component": "nazwa",
+                              "name": "nazwaLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "maxLength": 2,
+                              "type": "textbox",
+                              "name": "nazwa",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${klasa.nazwa}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "back"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update Klasa",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "Baza.updateKlasa",
+                        "parameters": [
+                          {
+                            "name": "klasa_id",
+                            "value": "${parameters.klasa_id}"
+                          },
+                          {
+                            "name": "Klasa",
+                            "value": "${event}"
+                          },
+                          {
+                            "name": "$expand",
+                            "value": "Nauczyciel"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "back"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "Baza.getKlasaByklasa_id",
+        "parameters": [
+          {
+            "name": "klasa_id",
+            "value": "${parameters.klasa_id}"
+          }
+        ],
+        "then": [
+          {
+            "name": "klasa",
+            "type": "set",
+            "value": "${result}"
+          }
+        ],
+        "error": [],
+        "type": "invoke"
+      },
+      {
+        "name": "Baza.getNauczyciels",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getNauczycielsResult",
+            "type": "set",
+            "value": "${result.value}"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Edit Klasa",
+  "layout": "Main",
+  "access": [
+    "Authenticated"
+  ]
+}

@@ -1,0 +1,66 @@
+<rz-content #content1 container="main">
+  <div class="row">
+    <div class="col-md-12">
+      <rz-template-form #form0 (submit)="form0Submit($event)">
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #imieLabel component="imie" [style]="{'width': '100%'}" text="Imie">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-textbox #imie [style]="{'width': '100%'}" name="imie">
+            </rz-textbox>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #emailLabel component="email" [style]="{'width': '100%'}" text="Email">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-textbox #email [style]="{'width': '100%'}" name="email">
+            </rz-textbox>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #nazwiskoLabel component="nazwisko" [style]="{'width': '100%'}" text="Nazwisko">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-textbox #nazwisko [style]="{'width': '100%'}" name="nazwisko">
+            </rz-textbox>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #telefonLabel component="telefon" [style]="{'width': '100%'}" text="Telefon">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-textbox #telefon [style]="{'width': '100%'}" name="telefon">
+            </rz-textbox>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #hasloLabel component="haslo" [style]="{'width': '100%'}" text="Haslo">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-textbox #haslo [style]="{'width': '100%'}" name="haslo">
+            </rz-textbox>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col offset-sm-3">
+            <rz-button #button1 buttonStyle="primary" buttonType="submit" icon="save" text="Save">
+            </rz-button>
+            <rz-button #button2 buttonStyle="light" [style]="{'marginLeft': '1rem'}" text="Cancel">
+            </rz-button>
+          </div>
+        </div>
+      </rz-template-form>
+    </div>
+  </div>
+</rz-content>

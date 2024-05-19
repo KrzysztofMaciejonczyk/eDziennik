@@ -1,0 +1,297 @@
+{
+  "access": [
+    "Authenticated"
+  ],
+  "components": [
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "class": "col-md-12",
+              "components": [
+                {
+                  "[object Object]": [],
+                  "components": [
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "imie",
+                              "name": "imieLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Imie",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "format": "",
+                              "name": "imie",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "email",
+                              "name": "emailLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Email",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "format": "",
+                              "name": "email",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "nazwisko",
+                              "name": "nazwiskoLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Nazwisko",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "format": "",
+                              "name": "nazwisko",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "telefon",
+                              "name": "telefonLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Telefon",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "format": "",
+                              "name": "telefon",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "haslo",
+                              "name": "hasloLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Haslo",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "format": "",
+                              "name": "haslo",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "buttonStyle": "primary",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "type": "button"
+                            },
+                            {
+                              "buttonStyle": "light",
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Cancel",
+                              "type": "button"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "type": "row"
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update Osoba",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "Baza.updateOsoba",
+                        "parameters": [
+                          {
+                            "name": "osoba_id",
+                            "value": "${parameters.osoba_id}"
+                          },
+                          {
+                            "name": "Osoba",
+                            "value": "${event}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "back"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "name": "form0",
+                  "type": "template-form"
+                }
+              ],
+              "type": "col"
+            }
+          ],
+          "type": "row"
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "error": [],
+        "name": "Baza.getOsobaByosoba_id",
+        "parameters": [
+          {
+            "name": "osoba_id",
+            "value": "${parameters.osoba_id}"
+          }
+        ],
+        "then": [
+          {
+            "name": "osoba",
+            "type": "set",
+            "value": "${result}"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "layout": "Main",
+  "name": "Edit Osoba"
+}
