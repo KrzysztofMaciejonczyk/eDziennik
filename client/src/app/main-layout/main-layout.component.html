@@ -36,6 +36,12 @@
     </rz-panelmenu-item>
     <rz-panelmenu-item text="Nauczyciel" path="nauczyciel" *ngIf="security?.isInRole(['Authenticated'])">
     </rz-panelmenu-item>
+    <rz-panelmenu-item text="Rodzic" path="rodzic" *ngIf="security?.isInRole(['Authenticated', 'Admin'])">
+    </rz-panelmenu-item>
+    <rz-panelmenu-item text="Uczen" path="uczen" *ngIf="security?.isInRole(['Admin', 'Authenticated'])">
+    </rz-panelmenu-item>
+    <rz-panelmenu-item text="Ocena" path="ocena" *ngIf="security?.isInRole(['Nauczyciel'])">
+    </rz-panelmenu-item>
   </rz-panelmenu>
 </rz-sidebar>
 <rz-footer #footer0>

@@ -1,6 +1,7 @@
 {
   "access": [
-    "Authenticated"
+    "Authenticated",
+    "Admin"
   ],
   "components": [
     {
@@ -8,7 +9,7 @@
         {
           "name": "pageTitle",
           "size": "H1",
-          "text": "Osoba",
+          "text": "Rodzic",
           "type": "heading"
         },
         {
@@ -28,37 +29,17 @@
                   "clearFilterText": "Clear",
                   "columns": [
                     {
+                      "filterProperty": "Osoba.imie",
                       "property": "osoba_id",
-                      "title": "Osoba Id",
+                      "sortProperty": "Osoba.imie",
+                      "template": "",
+                      "title": "Osoba",
+                      "type": "string"
+                    },
+                    {
+                      "property": "rodzic_id",
+                      "title": "Rodzic Id",
                       "type": "integer"
-                    },
-                    {
-                      "property": "nazwisko",
-                      "title": "Nazwisko",
-                      "type": "string"
-                    },
-                    {
-                      "format": "",
-                      "property": "email",
-                      "title": "Email",
-                      "type": "string"
-                    },
-                    {
-                      "property": "telefon",
-                      "title": "Telefon",
-                      "type": "string"
-                    },
-                    {
-                      "format": "",
-                      "property": "haslo",
-                      "title": "Haslo",
-                      "type": "string",
-                      "visible": true
-                    },
-                    {
-                      "property": "imie",
-                      "title": "Imie",
-                      "type": "string"
                     }
                   ],
                   "confirmDelete": true,
@@ -67,15 +48,15 @@
                   "confirmDeleteText": "Are you sure you want to delete this record?",
                   "confirmDeleteTitle": "Confirmation",
                   "containsText": "Contains",
-                  "count": "${getOsobasCount}",
-                  "data": "${getOsobasResult}",
+                  "count": "${getRodzicsCount}",
+                  "data": "${getRodzicsResult}",
                   "emptyText": "No records to display.",
                   "endsWithText": "Ends with",
                   "equalsText": "Equals",
                   "events": {
                     "add": [
                       {
-                        "path": "add-osoba",
+                        "path": "add-rodzic",
                         "type": "popup"
                       }
                     ],
@@ -83,22 +64,22 @@
                       {
                         "error": [
                           {
-                            "detail": "Unable to delete Osoba",
+                            "detail": "Unable to delete Rodzic",
                             "severity": "error",
                             "summary": "Error",
                             "type": "notify"
                           }
                         ],
-                        "name": "Baza.deleteOsoba",
+                        "name": "Baza.deleteRodzic",
                         "parameters": [
                           {
-                            "name": "osoba_id",
-                            "value": "${event.osoba_id}"
+                            "name": "rodzic_id",
+                            "value": "${event.rodzic_id}"
                           }
                         ],
                         "then": [
                           {
-                            "detail": "Osoba deleted!",
+                            "detail": "Rodzic deleted!",
                             "severity": "success",
                             "summary": "Success",
                             "type": "notify"
@@ -111,13 +92,13 @@
                       {
                         "error": [
                           {
-                            "detail": "Unable to load Osobas",
+                            "detail": "Unable to load Rodzics",
                             "severity": "error",
                             "summary": "Error",
                             "type": "notify"
                           }
                         ],
-                        "name": "Baza.getOsobas",
+                        "name": "Baza.getRodzics",
                         "parameters": [
                           {
                             "name": "$top",
@@ -141,17 +122,17 @@
                           },
                           {
                             "name": "$expand",
-                            "value": "Rodzics,Nauczyciels,Uczens"
+                            "value": "Uczens,Osoba"
                           }
                         ],
                         "then": [
                           {
-                            "name": "getOsobasResult",
+                            "name": "getRodzicsResult",
                             "type": "set",
                             "value": "${result.value}"
                           },
                           {
-                            "name": "getOsobasCount",
+                            "name": "getRodzicsCount",
                             "type": "set",
                             "value": "event.top != null && event.skip != null ? result['@odata.count'] : ${result.value.length}"
                           }
@@ -163,11 +144,11 @@
                       {
                         "parameters": [
                           {
-                            "name": "osoba_id",
-                            "value": "${event.osoba_id}"
+                            "name": "rodzic_id",
+                            "value": "${event.rodzic_id}"
                           }
                         ],
-                        "path": "edit-osoba",
+                        "path": "edit-rodzic",
                         "type": "popup"
                       }
                     ]
@@ -202,5 +183,5 @@
     ]
   },
   "layout": "Main",
-  "name": "Osoba"
+  "name": "Rodzic"
 }

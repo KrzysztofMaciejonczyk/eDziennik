@@ -1,0 +1,319 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Ocena N",
+                              "component": "ocena_n",
+                              "name": "ocena_nLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "type": "numeric",
+                              "name": "ocena_n",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${ocena.ocena_n}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Nauczyciel",
+                              "component": "nauczyciel_id",
+                              "name": "nauczyciel_idLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getNauczycielsResult}",
+                              "textProperty": "nauczyciel_id",
+                              "valueProperty": "nauczyciel_id",
+                              "placeholder": "Choose Nauczyciel",
+                              "type": "dropdown",
+                              "name": "nauczyciel_id",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${ocena.nauczyciel_id}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Uczen",
+                              "component": "uczen_id",
+                              "name": "uczen_idLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getUczensResult}",
+                              "textProperty": "adres",
+                              "valueProperty": "uczen_id",
+                              "placeholder": "Choose Uczen",
+                              "type": "dropdown",
+                              "name": "uczen_id",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${ocena.uczen_id}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Data Opi",
+                              "component": "data_opis_id",
+                              "name": "data_opis_idLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getDataOpisResult}",
+                              "textProperty": "opis",
+                              "valueProperty": "data_opis_id",
+                              "placeholder": "Choose DataOpi",
+                              "type": "dropdown",
+                              "name": "data_opis_id",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${ocena.data_opis_id}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "back"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update Ocena",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "Baza.updateOcena",
+                        "parameters": [
+                          {
+                            "name": "ocena_id",
+                            "value": "${parameters.ocena_id}"
+                          },
+                          {
+                            "name": "Ocena",
+                            "value": "${event}"
+                          },
+                          {
+                            "name": "$expand",
+                            "value": "Nauczyciel,Uczen,DataOpi"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "back"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "Baza.getOcenaByocena_id",
+        "parameters": [
+          {
+            "name": "ocena_id",
+            "value": "${parameters.ocena_id}"
+          }
+        ],
+        "then": [
+          {
+            "name": "ocena",
+            "type": "set",
+            "value": "${result}"
+          }
+        ],
+        "error": [],
+        "type": "invoke"
+      },
+      {
+        "name": "Baza.getNauczyciels",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getNauczycielsResult",
+            "type": "set",
+            "value": "${result.value}"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "Baza.getUczens",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getUczensResult",
+            "type": "set",
+            "value": "${result.value}"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "Baza.getDataOpis",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getDataOpisResult",
+            "type": "set",
+            "value": "${result.value}"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Edit Ocena",
+  "access": [
+    "Authenticated",
+    "Nauczyciel"
+  ],
+  "layout": "Main"
+}

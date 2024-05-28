@@ -1,6 +1,7 @@
 {
   "access": [
-    "Authenticated"
+    "Authenticated",
+    "Rodzic"
   ],
   "components": [
     {
@@ -33,17 +34,62 @@
                           "class": "col-md-9",
                           "components": [
                             {
-                              "data": "${getOsobasResult}",
-                              "emptyFilterText": "No results found",
-                              "multipleItemsSelectedText": "{0} items selected",
+                              "count": "${getOsobasForosoba_idCount}",
+                              "data": "${getOsobasForosoba_idResult}",
+                              "emptyText": "No records to display.",
+                              "events": {
+                                "loadData": [
+                                  {
+                                    "name": "Baza.getOsobas",
+                                    "parameters": [
+                                      {
+                                        "name": "$top",
+                                        "value": "${event.top}"
+                                      },
+                                      {
+                                        "name": "$skip",
+                                        "value": "${event.skip}"
+                                      },
+                                      {
+                                        "name": "$orderby",
+                                        "value": "${event.orderby}"
+                                      },
+                                      {
+                                        "name": "$filter",
+                                        "value": "${event.filter}"
+                                      },
+                                      {
+                                        "name": "$count",
+                                        "value": "true"
+                                      }
+                                    ],
+                                    "then": [
+                                      {
+                                        "name": "getOsobasForosoba_idResult",
+                                        "type": "set",
+                                        "value": "${result.value}"
+                                      },
+                                      {
+                                        "name": "getOsobasForosoba_idCount",
+                                        "type": "set",
+                                        "value": "result['@odata.count']"
+                                      }
+                                    ],
+                                    "type": "invoke"
+                                  }
+                                ]
+                              },
                               "name": "osoba_id",
+                              "pageSize": "${getOsobasForosoba_idPageSize}",
                               "placeholder": "Choose Osoba",
+                              "searchText": "Search...",
+                              "selectedValue": "${getByOsobasForosoba_idResult}",
                               "style": {
                                 "width": "100%"
                               },
                               "textProperty": "osoba_id",
-                              "type": "dropdown",
-                              "value": "${nauczyciel.osoba_id}",
+                              "type": "dropdown-datagrid",
+                              "value": "${rodzic.osoba_id}",
                               "valueProperty": "osoba_id"
                             }
                           ],
@@ -94,20 +140,20 @@
                       {
                         "error": [
                           {
-                            "detail": "Unable to update Nauczyciel",
+                            "detail": "Unable to update Rodzic",
                             "severity": "error",
                             "summary": "Error",
                             "type": "notify"
                           }
                         ],
-                        "name": "Baza.updateNauczyciel",
+                        "name": "Baza.updateRodzic",
                         "parameters": [
                           {
-                            "name": "nauczyciel_id",
-                            "value": "${parameters.nauczyciel_id}"
+                            "name": "rodzic_id",
+                            "value": "${parameters.rodzic_id}"
                           },
                           {
-                            "name": "Nauczyciel",
+                            "name": "Rodzic",
                             "value": "${event}"
                           },
                           {
@@ -142,30 +188,71 @@
     "load": [
       {
         "error": [],
-        "name": "Baza.getNauczycielBynauczyciel_id",
+        "name": "Baza.getRodzicByrodzic_id",
         "parameters": [
           {
-            "name": "nauczyciel_id",
-            "value": "${parameters.nauczyciel_id}"
+            "name": "rodzic_id",
+            "value": "${parameters.rodzic_id}"
           }
         ],
         "then": [
           {
-            "name": "nauczyciel",
+            "name": "rodzic",
             "type": "set",
             "value": "${result}"
+          },
+          {
+            "condition": "this.rodzic.osoba_id != null",
+            "name": "Baza.getOsobaByosoba_id",
+            "parameters": [
+              {
+                "name": "osoba_id",
+                "value": "${this.rodzic.osoba_id}"
+              }
+            ],
+            "then": [
+              {
+                "name": "getByOsobasForosoba_idResult",
+                "type": "set",
+                "value": "${result}"
+              }
+            ],
+            "type": "invoke"
           }
         ],
         "type": "invoke"
       },
       {
+        "name": "getOsobasForosoba_idPageSize",
+        "type": "set",
+        "value": "10"
+      },
+      {
         "name": "Baza.getOsobas",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "$top",
+            "value": "${getOsobasForosoba_idPageSize}"
+          },
+          {
+            "name": "$skip",
+            "value": "0"
+          },
+          {
+            "name": "$count",
+            "value": "true"
+          }
+        ],
         "then": [
           {
-            "name": "getOsobasResult",
+            "name": "getOsobasForosoba_idResult",
             "type": "set",
             "value": "${result.value}"
+          },
+          {
+            "name": "getOsobasForosoba_idCount",
+            "type": "set",
+            "value": "result['@odata.count']"
           }
         ],
         "type": "invoke"
@@ -173,5 +260,5 @@
     ]
   },
   "layout": "Main",
-  "name": "Edit Nauczyciel"
+  "name": "Edit Rodzic"
 }

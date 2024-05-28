@@ -1,0 +1,614 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Data Urodzenia",
+                              "component": "data_urodzenia",
+                              "name": "data_urodzeniaLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "type": "datepicker",
+                              "name": "data_urodzenia",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${uczen.data_urodzenia}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Osoba",
+                              "component": "osoba_id",
+                              "name": "osoba_idLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getOsobasForosoba_idResult}",
+                              "textProperty": "imie",
+                              "valueProperty": "osoba_id",
+                              "placeholder": "Choose Osoba",
+                              "count": "${getOsobasForosoba_idCount}",
+                              "pageSize": "${getOsobasForosoba_idPageSize}",
+                              "value": "${uczen.osoba_id}",
+                              "type": "dropdown-datagrid",
+                              "name": "osoba_id",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "selectedValue": "${getByOsobasForosoba_idResult}",
+                              "events": {
+                                "loadData": [
+                                  {
+                                    "name": "Baza.getOsobas",
+                                    "parameters": [
+                                      {
+                                        "name": "$top",
+                                        "value": "${event.top}"
+                                      },
+                                      {
+                                        "name": "$skip",
+                                        "value": "${event.skip}"
+                                      },
+                                      {
+                                        "name": "$orderby",
+                                        "value": "${event.orderby}"
+                                      },
+                                      {
+                                        "name": "$filter",
+                                        "value": "${event.filter}"
+                                      },
+                                      {
+                                        "name": "$count",
+                                        "value": "true"
+                                      }
+                                    ],
+                                    "then": [
+                                      {
+                                        "name": "getOsobasForosoba_idResult",
+                                        "type": "set",
+                                        "value": "${result.value}"
+                                      },
+                                      {
+                                        "name": "getOsobasForosoba_idCount",
+                                        "type": "set",
+                                        "value": "result['@odata.count']"
+                                      }
+                                    ],
+                                    "type": "invoke"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Rodzic",
+                              "component": "rodzic_id",
+                              "name": "rodzic_idLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getRodzicsForrodzic_idResult}",
+                              "textProperty": "rodzic_id",
+                              "valueProperty": "rodzic_id",
+                              "placeholder": "Choose Rodzic",
+                              "count": "${getRodzicsForrodzic_idCount}",
+                              "pageSize": "${getRodzicsForrodzic_idPageSize}",
+                              "value": "${uczen.rodzic_id}",
+                              "type": "dropdown-datagrid",
+                              "name": "rodzic_id",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "selectedValue": "${getByRodzicsForrodzic_idResult}",
+                              "events": {
+                                "loadData": [
+                                  {
+                                    "name": "Baza.getRodzics",
+                                    "parameters": [
+                                      {
+                                        "name": "$top",
+                                        "value": "${event.top}"
+                                      },
+                                      {
+                                        "name": "$skip",
+                                        "value": "${event.skip}"
+                                      },
+                                      {
+                                        "name": "$orderby",
+                                        "value": "${event.orderby}"
+                                      },
+                                      {
+                                        "name": "$filter",
+                                        "value": "${event.filter}"
+                                      },
+                                      {
+                                        "name": "$count",
+                                        "value": "true"
+                                      }
+                                    ],
+                                    "then": [
+                                      {
+                                        "name": "getRodzicsForrodzic_idResult",
+                                        "type": "set",
+                                        "value": "${result.value}"
+                                      },
+                                      {
+                                        "name": "getRodzicsForrodzic_idCount",
+                                        "type": "set",
+                                        "value": "result['@odata.count']"
+                                      }
+                                    ],
+                                    "type": "invoke"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Klasa",
+                              "component": "klasa_id",
+                              "name": "klasa_idLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getKlasasForklasa_idResult}",
+                              "textProperty": "nazwa",
+                              "valueProperty": "klasa_id",
+                              "placeholder": "Choose Klasa",
+                              "count": "${getKlasasForklasa_idCount}",
+                              "pageSize": "${getKlasasForklasa_idPageSize}",
+                              "value": "${uczen.klasa_id}",
+                              "type": "dropdown-datagrid",
+                              "name": "klasa_id",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "selectedValue": "${getByKlasasForklasa_idResult}",
+                              "events": {
+                                "loadData": [
+                                  {
+                                    "name": "Baza.getKlasas",
+                                    "parameters": [
+                                      {
+                                        "name": "$top",
+                                        "value": "${event.top}"
+                                      },
+                                      {
+                                        "name": "$skip",
+                                        "value": "${event.skip}"
+                                      },
+                                      {
+                                        "name": "$orderby",
+                                        "value": "${event.orderby}"
+                                      },
+                                      {
+                                        "name": "$filter",
+                                        "value": "${event.filter}"
+                                      },
+                                      {
+                                        "name": "$count",
+                                        "value": "true"
+                                      }
+                                    ],
+                                    "then": [
+                                      {
+                                        "name": "getKlasasForklasa_idResult",
+                                        "type": "set",
+                                        "value": "${result.value}"
+                                      },
+                                      {
+                                        "name": "getKlasasForklasa_idCount",
+                                        "type": "set",
+                                        "value": "result['@odata.count']"
+                                      }
+                                    ],
+                                    "type": "invoke"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Adres",
+                              "component": "adres",
+                              "name": "adresLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "maxLength": 100,
+                              "type": "textbox",
+                              "name": "adres",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${uczen.adres}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "back"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update Uczen",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "Baza.updateUczen",
+                        "parameters": [
+                          {
+                            "name": "uczen_id",
+                            "value": "${parameters.uczen_id}"
+                          },
+                          {
+                            "name": "Uczen",
+                            "value": "${event}"
+                          },
+                          {
+                            "name": "$expand",
+                            "value": "Osoba,Rodzic,Klasa"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "back"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "Baza.getUczenByuczen_id",
+        "parameters": [
+          {
+            "name": "uczen_id",
+            "value": "${parameters.uczen_id}"
+          }
+        ],
+        "then": [
+          {
+            "name": "uczen",
+            "type": "set",
+            "value": "${result}"
+          },
+          {
+            "name": "Baza.getOsobaByosoba_id",
+            "parameters": [
+              {
+                "name": "osoba_id",
+                "value": "${this.uczen.osoba_id}"
+              }
+            ],
+            "then": [
+              {
+                "name": "getByOsobasForosoba_idResult",
+                "type": "set",
+                "value": "${result}"
+              }
+            ],
+            "condition": "this.uczen.osoba_id != null",
+            "type": "invoke"
+          },
+          {
+            "name": "Baza.getRodzicByrodzic_id",
+            "parameters": [
+              {
+                "name": "rodzic_id",
+                "value": "${this.uczen.rodzic_id}"
+              }
+            ],
+            "then": [
+              {
+                "name": "getByRodzicsForrodzic_idResult",
+                "type": "set",
+                "value": "${result}"
+              }
+            ],
+            "condition": "this.uczen.rodzic_id != null",
+            "type": "invoke"
+          },
+          {
+            "name": "Baza.getKlasaByklasa_id",
+            "parameters": [
+              {
+                "name": "klasa_id",
+                "value": "${this.uczen.klasa_id}"
+              }
+            ],
+            "then": [
+              {
+                "name": "getByKlasasForklasa_idResult",
+                "type": "set",
+                "value": "${result}"
+              }
+            ],
+            "condition": "this.uczen.klasa_id != null",
+            "type": "invoke"
+          }
+        ],
+        "error": [],
+        "type": "invoke"
+      },
+      {
+        "name": "getOsobasForosoba_idPageSize",
+        "type": "set",
+        "value": "10"
+      },
+      {
+        "name": "Baza.getOsobas",
+        "parameters": [
+          {
+            "name": "$top",
+            "value": "${getOsobasForosoba_idPageSize}"
+          },
+          {
+            "name": "$skip",
+            "value": "0"
+          },
+          {
+            "name": "$count",
+            "value": "true"
+          }
+        ],
+        "then": [
+          {
+            "name": "getOsobasForosoba_idResult",
+            "type": "set",
+            "value": "${result.value}"
+          },
+          {
+            "name": "getOsobasForosoba_idCount",
+            "type": "set",
+            "value": "result['@odata.count']"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "getRodzicsForrodzic_idPageSize",
+        "type": "set",
+        "value": "10"
+      },
+      {
+        "name": "Baza.getRodzics",
+        "parameters": [
+          {
+            "name": "$top",
+            "value": "${getRodzicsForrodzic_idPageSize}"
+          },
+          {
+            "name": "$skip",
+            "value": "0"
+          },
+          {
+            "name": "$count",
+            "value": "true"
+          }
+        ],
+        "then": [
+          {
+            "name": "getRodzicsForrodzic_idResult",
+            "type": "set",
+            "value": "${result.value}"
+          },
+          {
+            "name": "getRodzicsForrodzic_idCount",
+            "type": "set",
+            "value": "result['@odata.count']"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "getKlasasForklasa_idPageSize",
+        "type": "set",
+        "value": "10"
+      },
+      {
+        "name": "Baza.getKlasas",
+        "parameters": [
+          {
+            "name": "$top",
+            "value": "${getKlasasForklasa_idPageSize}"
+          },
+          {
+            "name": "$skip",
+            "value": "0"
+          },
+          {
+            "name": "$count",
+            "value": "true"
+          }
+        ],
+        "then": [
+          {
+            "name": "getKlasasForklasa_idResult",
+            "type": "set",
+            "value": "${result.value}"
+          },
+          {
+            "name": "getKlasasForklasa_idCount",
+            "type": "set",
+            "value": "result['@odata.count']"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Edit Uczen",
+  "access": [
+    "Admin"
+  ],
+  "layout": "Main"
+}

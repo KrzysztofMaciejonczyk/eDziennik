@@ -1,94 +1,91 @@
 {
+  "access": [
+    "Authenticated"
+  ],
   "components": [
     {
-      "type": "content",
-      "container": "main",
       "components": [
         {
-          "type": "row",
           "components": [
             {
-              "type": "col",
               "class": "col-md-12",
               "components": [
                 {
-                  "type": "template-form",
-                  "name": "form0",
                   "components": [
                     {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
                       "components": [
                         {
-                          "type": "col",
                           "class": "col-md-3",
                           "components": [
                             {
-                              "type": "label",
-                              "text": "Osoba",
                               "component": "osoba_id",
                               "name": "osoba_idLabel",
                               "style": {
                                 "width": "100%"
-                              }
+                              },
+                              "text": "Osoba",
+                              "type": "label"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         },
                         {
-                          "type": "col",
                           "class": "col-md-9",
                           "components": [
                             {
                               "data": "${getOsobasResult}",
-                              "textProperty": "nazwisko",
-                              "valueProperty": "osoba_id",
-                              "placeholder": "Choose Osoba",
-                              "type": "dropdown",
+                              "emptyFilterText": "No results found",
+                              "multipleItemsSelectedText": "{0} items selected",
                               "name": "osoba_id",
+                              "placeholder": "Choose Osoba",
                               "style": {
                                 "width": "100%"
                               },
-                              "multipleItemsSelectedText": "{0} items selected",
-                              "emptyFilterText": "No results found"
+                              "textProperty": "osoba_id",
+                              "type": "dropdown",
+                              "valueProperty": "osoba_id"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
                     },
                     {
-                      "type": "row",
                       "components": [
                         {
-                          "type": "col",
                           "class": "col offset-sm-3",
                           "components": [
                             {
-                              "type": "button",
+                              "buttonStyle": "primary",
                               "buttonType": "submit",
                               "icon": "save",
                               "text": "Save",
-                              "buttonStyle": "primary"
+                              "type": "button"
                             },
                             {
-                              "type": "button",
                               "buttonStyle": "light",
-                              "style": {
-                                "marginLeft": "1rem"
-                              },
-                              "text": "Cancel",
                               "events": {
                                 "click": [
                                   {
                                     "type": "back"
                                   }
                                 ]
-                              }
+                              },
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Cancel",
+                              "type": "button"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
+                      ],
+                      "type": "row"
                     }
                   ],
                   "events": {
@@ -117,13 +114,19 @@
                         "type": "invoke"
                       }
                     ]
-                  }
+                  },
+                  "name": "form0",
+                  "type": "template-form"
                 }
-              ]
+              ],
+              "type": "col"
             }
-          ]
+          ],
+          "type": "row"
         }
-      ]
+      ],
+      "container": "main",
+      "type": "content"
     }
   ],
   "events": {
@@ -142,9 +145,6 @@
       }
     ]
   },
-  "name": "Add Nauczyciel",
   "layout": "Main",
-  "access": [
-    "Authenticated"
-  ]
+  "name": "Add Nauczyciel"
 }

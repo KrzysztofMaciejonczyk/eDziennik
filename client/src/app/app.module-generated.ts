@@ -29,6 +29,9 @@ import { FormModule } from '@radzen/angular/dist/form';
 import { PasswordModule } from '@radzen/angular/dist/password';
 import { LoginModule } from '@radzen/angular/dist/login';
 import { HtmlModule } from '@radzen/angular/dist/html';
+import { DropDownDataGridModule } from '@radzen/angular/dist/dropdown-datagrid';
+import { DatePickerModule } from '@radzen/angular/dist/datepicker';
+import { NumericModule } from '@radzen/angular/dist/numeric';
 import { SharedModule } from '@radzen/angular/dist/shared';
 import { NotificationModule } from '@radzen/angular/dist/notification';
 import { DialogModule } from '@radzen/angular/dist/dialog';
@@ -56,6 +59,15 @@ import { AddApplicationUserComponent } from './add-application-user/add-applicat
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { RodzicComponent } from './rodzic/rodzic.component';
+import { AddRodzicComponent } from './add-rodzic/add-rodzic.component';
+import { EditRodzicComponent } from './edit-rodzic/edit-rodzic.component';
+import { UczenComponent } from './uczen/uczen.component';
+import { AddUczenComponent } from './add-uczen/add-uczen.component';
+import { EditUczenComponent } from './edit-uczen/edit-uczen.component';
+import { OcenaComponent } from './ocena/ocena.component';
+import { AddOcenaComponent } from './add-ocena/add-ocena.component';
+import { EditOcenaComponent } from './edit-ocena/edit-ocena.component';
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 
@@ -83,6 +95,15 @@ export const PageDeclarations = [
   ProfileComponent,
   LoginComponent,
   UnauthorizedComponent,
+  RodzicComponent,
+  AddRodzicComponent,
+  EditRodzicComponent,
+  UczenComponent,
+  AddUczenComponent,
+  EditUczenComponent,
+  OcenaComponent,
+  AddOcenaComponent,
+  EditOcenaComponent,
 ];
 
 export const LayoutDeclarations = [
@@ -147,6 +168,9 @@ export const AppImports = [
   PasswordModule,
   LoginModule,
   HtmlModule,
+  DropDownDataGridModule,
+  DatePickerModule,
+  NumericModule,
   SharedModule,
   NotificationModule,
   DialogModule,

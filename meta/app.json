@@ -13,7 +13,10 @@
   "navigation": [
     "Osoba",
     "Klasa",
-    "Nauczyciel"
+    "Nauczyciel",
+    "Rodzic",
+    "Uczen",
+    "Ocena"
   ],
   "pages": [
     "Osoba",
@@ -33,7 +36,16 @@
     "Add Application User",
     "Profile",
     "Login",
-    "Unauthorized"
+    "Unauthorized",
+    "Rodzic",
+    "Add Rodzic",
+    "Edit Rodzic",
+    "Uczen",
+    "Add Uczen",
+    "Edit Uczen",
+    "Ocena",
+    "Add Ocena",
+    "Edit Ocena"
   ],
   "security": {
     "autoGeneratePages": true,

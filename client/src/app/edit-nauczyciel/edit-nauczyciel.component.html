@@ -4,17 +4,17 @@
       <rz-template-form #form0 (submit)="form0Submit($event)">
         <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
           <div class="col-md-3">
-            <rz-label #osobaIdLabel text="Osoba" component="osoba_id" [style]="{'width': '100%'}">
+            <rz-label #osobaIdLabel component="osoba_id" [style]="{'width': '100%'}" text="Osoba">
             </rz-label>
           </div>
           <div class="col-md-9">
-            <rz-dropdown #osobaId [data]="getOsobasResult" textProperty="nazwisko" valueProperty="osoba_id" placeholder="Choose Osoba" [style]="{'width': '100%'}" [(ngModel)]="nauczyciel && nauczyciel.osoba_id" multipleItemsSelectedText="{0} items selected" emptyFilterText="No results found" name="osoba_id">
+            <rz-dropdown #osobaId [data]="getOsobasResult" emptyFilterText="No results found" multipleItemsSelectedText="{0} items selected" placeholder="Choose Osoba" [style]="{'width': '100%'}" textProperty="osoba_id" [(ngModel)]="nauczyciel && nauczyciel.osoba_id" valueProperty="osoba_id" name="osoba_id">
             </rz-dropdown>
           </div>
         </div>
         <div class="row">
           <div class="col offset-sm-3">
-            <rz-button #button1 buttonType="submit" icon="save" text="Save" buttonStyle="primary">
+            <rz-button #button1 buttonStyle="primary" buttonType="submit" icon="save" text="Save">
             </rz-button>
             <rz-button #button2 buttonStyle="light" [style]="{'marginLeft': '1rem'}" text="Cancel" (click)="button2Click($event)">
             </rz-button>

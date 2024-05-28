@@ -8,8 +8,8 @@
             </rz-label>
           </div>
           <div class="col-md-9">
-            <rz-dropdown #osobaId [data]="getOsobasResult" emptyFilterText="No results found" multipleItemsSelectedText="{0} items selected" placeholder="Choose Osoba" [style]="{'width': '100%'}" textProperty="osoba_id" valueProperty="osoba_id" name="osoba_id">
-            </rz-dropdown>
+            <rz-dropdown-datagrid #osobaId [count]="getOsobasForosoba_idCount" [data]="getOsobasForosoba_idResult" emptyText="No records to display." [pageSize]="getOsobasForosoba_idPageSize" placeholder="Choose Osoba" searchText="Search..." [selectedValue]="getByOsobasForosoba_idResult" [style]="{'width': '100%'}" textProperty="osoba_id" [(ngModel)]="rodzic && rodzic.osoba_id" valueProperty="osoba_id" name="osoba_id" (loadData)="osoba_idLoadData($event)">
+            </rz-dropdown-datagrid>
           </div>
         </div>
         <div class="row">

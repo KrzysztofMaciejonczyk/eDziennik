@@ -21,6 +21,15 @@ import { AddApplicationUserComponent } from './add-application-user/add-applicat
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { RodzicComponent } from './rodzic/rodzic.component';
+import { AddRodzicComponent } from './add-rodzic/add-rodzic.component';
+import { EditRodzicComponent } from './edit-rodzic/edit-rodzic.component';
+import { UczenComponent } from './uczen/uczen.component';
+import { AddUczenComponent } from './add-uczen/add-uczen.component';
+import { EditUczenComponent } from './edit-uczen/edit-uczen.component';
+import { OcenaComponent } from './ocena/ocena.component';
+import { AddOcenaComponent } from './add-ocena/add-ocena.component';
+import { EditOcenaComponent } from './edit-ocena/edit-ocena.component';
 
 import { SecurityService } from './security.service';
 import { AuthGuard } from './auth.guard';
@@ -163,6 +172,78 @@ export const routes: Routes = [
           roles: ['Everybody'],
         },
         component: UnauthorizedComponent
+      },
+      {
+        path: 'rodzic',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['Authenticated', 'Admin'],
+        },
+        component: RodzicComponent
+      },
+      {
+        path: 'add-rodzic',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['Authenticated', 'Rodzic'],
+        },
+        component: AddRodzicComponent
+      },
+      {
+        path: 'edit-rodzic/:rodzic_id',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['Authenticated', 'Rodzic'],
+        },
+        component: EditRodzicComponent
+      },
+      {
+        path: 'uczen',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['Admin', 'Authenticated'],
+        },
+        component: UczenComponent
+      },
+      {
+        path: 'add-uczen',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['Admin'],
+        },
+        component: AddUczenComponent
+      },
+      {
+        path: 'edit-uczen/:uczen_id',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['Admin'],
+        },
+        component: EditUczenComponent
+      },
+      {
+        path: 'ocena',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['Nauczyciel'],
+        },
+        component: OcenaComponent
+      },
+      {
+        path: 'add-ocena',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['Authenticated', 'Nauczyciel'],
+        },
+        component: AddOcenaComponent
+      },
+      {
+        path: 'edit-ocena/:ocena_id',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['Authenticated', 'Nauczyciel'],
+        },
+        component: EditOcenaComponent
       },
     ]
   },

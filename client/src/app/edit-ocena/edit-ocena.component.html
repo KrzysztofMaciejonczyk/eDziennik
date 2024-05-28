@@ -1,0 +1,56 @@
+<rz-content #content1 container="main">
+  <div class="row">
+    <div class="col-md-12">
+      <rz-template-form #form0 (submit)="form0Submit($event)">
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #ocenaNLabel text="Ocena N" component="ocena_n" [style]="{'width': '100%'}">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-numeric #ocenaN [style]="{'width': '100%'}" [(ngModel)]="ocena && ocena.ocena_n" name="ocena_n">
+            </rz-numeric>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #nauczycielIdLabel text="Nauczyciel" component="nauczyciel_id" [style]="{'width': '100%'}">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-dropdown #nauczycielId [data]="getNauczycielsResult" textProperty="nauczyciel_id" valueProperty="nauczyciel_id" placeholder="Choose Nauczyciel" [style]="{'width': '100%'}" [(ngModel)]="ocena && ocena.nauczyciel_id" multipleItemsSelectedText="{0} items selected" emptyFilterText="No results found" name="nauczyciel_id">
+            </rz-dropdown>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #uczenIdLabel text="Uczen" component="uczen_id" [style]="{'width': '100%'}">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-dropdown #uczenId [data]="getUczensResult" textProperty="adres" valueProperty="uczen_id" placeholder="Choose Uczen" [style]="{'width': '100%'}" [(ngModel)]="ocena && ocena.uczen_id" multipleItemsSelectedText="{0} items selected" emptyFilterText="No results found" name="uczen_id">
+            </rz-dropdown>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #dataOpisIdLabel text="Data Opi" component="data_opis_id" [style]="{'width': '100%'}">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-dropdown #dataOpisId [data]="getDataOpisResult" textProperty="opis" valueProperty="data_opis_id" placeholder="Choose DataOpi" [style]="{'width': '100%'}" [(ngModel)]="ocena && ocena.data_opis_id" multipleItemsSelectedText="{0} items selected" emptyFilterText="No results found" name="data_opis_id">
+            </rz-dropdown>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col offset-sm-3">
+            <rz-button #button1 buttonType="submit" icon="save" text="Save" buttonStyle="primary">
+            </rz-button>
+            <rz-button #button2 buttonStyle="light" [style]="{'marginLeft': '1rem'}" text="Cancel" (click)="button2Click($event)">
+            </rz-button>
+          </div>
+        </div>
+      </rz-template-form>
+    </div>
+  </div>
+</rz-content>
