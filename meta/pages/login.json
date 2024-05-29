@@ -4,26 +4,31 @@
   ],
   "components": [
     {
-      "type": "content",
-      "container": "main",
       "components": [
         {
-          "type": "heading",
           "name": "pageTitle",
           "size": "H1",
-          "text": "Login"
+          "text": "Ekran logowania",
+          "type": "heading"
         },
         {
-          "type": "row",
           "components": [
             {
-              "type": "col",
               "class": "col-md-12",
               "components": [
                 {
+                  "allowResetPassword": true,
                   "events": {
                     "login": [
                       {
+                        "error": [
+                          {
+                            "detail": "${result.error.message}",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
                         "name": "Security.login",
                         "parameters": [
                           {
@@ -35,15 +40,7 @@
                             "value": "${event.password}"
                           }
                         ],
-                        "type": "invoke",
-                        "error": [
-                          {
-                            "detail": "${result.error.message}",
-                            "severity": "error",
-                            "summary": "Error",
-                            "type": "notify"
-                          }
-                        ]
+                        "type": "invoke"
                       }
                     ],
                     "register": [
@@ -53,28 +50,34 @@
                       }
                     ]
                   },
-                  "allowResetPassword": false,
+                  "loginText": "Zaloguj się",
                   "name": "login0",
+                  "passwordRequired": "Hasło jest wymagane",
+                  "passwordText": "Hasło",
+                  "registerMessageText": "Nie masz jeszcze konta?",
+                  "registerText": "Zarejestruj się",
+                  "resetPasswordText": "Zapomniałeś hasła?",
+                  "style": {
+                    "width": "431.140625px"
+                  },
                   "type": "login",
-                  "loginText": "Login",
-                  "registerText": "Sign up",
-                  "registerMessageText": "Don't have an account yet?",
-                  "userText": "Username",
-                  "userRequired": "Username is required",
-                  "passwordText": "Password",
-                  "passwordRequired": "Password is required",
-                  "resetPasswordText": "Forgot password"
+                  "userRequired": "Nazwa użytkownika jest wymagana",
+                  "userText": "Login"
                 }
-              ]
+              ],
+              "type": "col"
             }
-          ]
+          ],
+          "type": "row"
         }
-      ]
+      ],
+      "container": "main",
+      "type": "content"
     }
   ],
   "events": {
     "load": []
   },
-  "name": "Login",
-  "layout": "Login"
+  "layout": "Login",
+  "name": "Login"
 }

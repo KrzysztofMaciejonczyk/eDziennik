@@ -8,7 +8,7 @@
           "type": "heading",
           "name": "pageTitle",
           "size": "H1",
-          "text": "Klasa"
+          "text": "Obecnosc"
         },
         {
           "type": "row",
@@ -26,12 +26,12 @@
                   "allowMultiSorting": false,
                   "allowPaging": true,
                   "allowSorting": true,
-                  "count": "${getKlasasCount}",
-                  "data": "${getKlasasResult}",
+                  "count": "${getObecnoscsCount}",
+                  "data": "${getObecnoscsResult}",
                   "events": {
                     "loadData": [
                       {
-                        "name": "Baza.getKlasas",
+                        "name": "Baza.getObecnoscs",
                         "parameters": [
                           {
                             "name": "$top",
@@ -55,17 +55,17 @@
                           },
                           {
                             "name": "$expand",
-                            "value": "Uczens,Przedmiots,Nauczyciel"
+                            "value": "Uczen,DataOpi"
                           }
                         ],
                         "then": [
                           {
-                            "name": "getKlasasResult",
+                            "name": "getObecnoscsResult",
                             "type": "set",
                             "value": "${result.value}"
                           },
                           {
-                            "name": "getKlasasCount",
+                            "name": "getObecnoscsCount",
                             "type": "set",
                             "value": "event.top != null && event.skip != null ? result['@odata.count'] : ${result.value.length}"
                           }
@@ -73,7 +73,7 @@
                         "type": "invoke",
                         "error": [
                           {
-                            "detail": "Unable to load Klasas",
+                            "detail": "Unable to load Obecnoscs",
                             "severity": "error",
                             "summary": "Error",
                             "type": "notify"
@@ -85,22 +85,22 @@
                       {
                         "error": [
                           {
-                            "detail": "Unable to delete Klasa",
+                            "detail": "Unable to delete Obecnosc",
                             "severity": "error",
                             "summary": "Error",
                             "type": "notify"
                           }
                         ],
-                        "name": "Baza.deleteKlasa",
+                        "name": "Baza.deleteObecnosc",
                         "parameters": [
                           {
-                            "name": "klasa_id",
-                            "value": "${event.klasa_id}"
+                            "name": "ocena_id",
+                            "value": "${event.ocena_id}"
                           }
                         ],
                         "then": [
                           {
-                            "detail": "Klasa deleted!",
+                            "detail": "Obecnosc deleted!",
                             "severity": "success",
                             "summary": "Success",
                             "type": "notify"
@@ -111,7 +111,7 @@
                     ],
                     "add": [
                       {
-                        "path": "add-klasa",
+                        "path": "add-obecnosc",
                         "type": "popup"
                       }
                     ],
@@ -119,11 +119,11 @@
                       {
                         "parameters": [
                           {
-                            "name": "klasa_id",
-                            "value": "${event.klasa_id}"
+                            "name": "ocena_id",
+                            "value": "${event.ocena_id}"
                           }
                         ],
-                        "path": "edit-klasa",
+                        "path": "edit-obecnosc",
                         "type": "popup"
                       }
                     ]
@@ -131,22 +131,30 @@
                   "title": "",
                   "columns": [
                     {
-                      "property": "nauczyciel_id",
-                      "sortProperty": "Nauczyciel.nauczyciel_id",
-                      "filterProperty": "Nauczyciel.nauczyciel_id",
-                      "template": "${data.Nauczyciel?.nauczyciel_id}",
-                      "title": "Nauczyciel",
-                      "type": "integer"
+                      "property": "czy_byl",
+                      "title": "Czy Byl",
+                      "type": "boolean"
                     },
                     {
-                      "property": "klasa_id",
-                      "title": "Klasa Id",
-                      "type": "integer"
-                    },
-                    {
-                      "property": "nazwa",
-                      "title": "Nazwa",
+                      "property": "uczen_id",
+                      "sortProperty": "Uczen.adres",
+                      "filterProperty": "Uczen.adres",
+                      "template": "${data.Uczen?.adres}",
+                      "title": "Uczen",
                       "type": "string"
+                    },
+                    {
+                      "property": "data_opis_id",
+                      "sortProperty": "DataOpi.opis",
+                      "filterProperty": "DataOpi.opis",
+                      "template": "${data.DataOpi?.opis}",
+                      "title": "Data Opi",
+                      "type": "string"
+                    },
+                    {
+                      "property": "ocena_id",
+                      "title": "Ocena Id",
+                      "type": "integer"
                     }
                   ],
                   "type": "grid",
@@ -183,9 +191,9 @@
       }
     ]
   },
-  "name": "Klasa",
-  "layout": "Main",
+  "name": "Obecnosc",
   "access": [
-    "Authenticated"
-  ]
+    "Nauczyciel"
+  ],
+  "layout": "Main"
 }

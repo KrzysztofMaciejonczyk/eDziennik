@@ -32,6 +32,7 @@ import { HtmlModule } from '@radzen/angular/dist/html';
 import { DropDownDataGridModule } from '@radzen/angular/dist/dropdown-datagrid';
 import { DatePickerModule } from '@radzen/angular/dist/datepicker';
 import { NumericModule } from '@radzen/angular/dist/numeric';
+import { CheckBoxModule } from '@radzen/angular/dist/checkbox';
 import { SharedModule } from '@radzen/angular/dist/shared';
 import { NotificationModule } from '@radzen/angular/dist/notification';
 import { DialogModule } from '@radzen/angular/dist/dialog';
@@ -41,10 +42,10 @@ import { AppRoutes } from './app.routes';
 import { AppComponent } from './app.component';
 import { CacheInterceptor } from './cache.interceptor';
 export { AppComponent } from './app.component';
-import { OsobaComponent } from './osoba/osoba.component';
+import { UzytkownicyComponent } from './użytkownicy/użytkownicy.component';
 import { AddOsobaComponent } from './add-osoba/add-osoba.component';
 import { EditOsobaComponent } from './edit-osoba/edit-osoba.component';
-import { KlasaComponent } from './klasa/klasa.component';
+import { KlasyComponent } from './klasy/klasy.component';
 import { AddKlasaComponent } from './add-klasa/add-klasa.component';
 import { EditKlasaComponent } from './edit-klasa/edit-klasa.component';
 import { NauczycielComponent } from './nauczyciel/nauczyciel.component';
@@ -68,6 +69,10 @@ import { EditUczenComponent } from './edit-uczen/edit-uczen.component';
 import { OcenaComponent } from './ocena/ocena.component';
 import { AddOcenaComponent } from './add-ocena/add-ocena.component';
 import { EditOcenaComponent } from './edit-ocena/edit-ocena.component';
+import { ObecnoscComponent } from './obecnosc/obecnosc.component';
+import { AddObecnoscComponent } from './add-obecnosc/add-obecnosc.component';
+import { EditObecnoscComponent } from './edit-obecnosc/edit-obecnosc.component';
+import { ObecnosciComponent } from './obecności/obecności.component';
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 
@@ -77,10 +82,10 @@ import { SecurityInterceptor } from './security.interceptor';
 import { AuthGuard } from './auth.guard';
 
 export const PageDeclarations = [
-  OsobaComponent,
+  UzytkownicyComponent,
   AddOsobaComponent,
   EditOsobaComponent,
-  KlasaComponent,
+  KlasyComponent,
   AddKlasaComponent,
   EditKlasaComponent,
   NauczycielComponent,
@@ -104,6 +109,10 @@ export const PageDeclarations = [
   OcenaComponent,
   AddOcenaComponent,
   EditOcenaComponent,
+  ObecnoscComponent,
+  AddObecnoscComponent,
+  EditObecnoscComponent,
+  ObecnosciComponent,
 ];
 
 export const LayoutDeclarations = [
@@ -171,6 +180,7 @@ export const AppImports = [
   DropDownDataGridModule,
   DatePickerModule,
   NumericModule,
+  CheckBoxModule,
   SharedModule,
   NotificationModule,
   DialogModule,

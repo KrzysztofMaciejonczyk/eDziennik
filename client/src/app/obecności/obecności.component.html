@@ -1,0 +1,24 @@
+<rz-content #content1 container="main">
+  <rz-heading #pageTitle size="H1" text="Obecności ucznia">
+  </rz-heading>
+  <div class="row">
+    <div class="col-md-12">
+      <rz-grid #grid0 [allowAdd]="false" [allowDelete]="false" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" applyFilterText="Apply" clearFilterText="Clear" [confirmDelete]="false" containsText="Contains" [count]="getObecnoscsCount" [data]="getObecnoscsResult" emptyText="Brak obecności." endsWithText="Ends with" equalsText="Equals" greaterThanOrEqualsText="Greater than or equals" greaterThanText="Greater than" lessThanOrEqualsText="Less than or equals" lessThanText="Less than" notEqualsText="Not equals" startsWithText="Starts with" (add)="grid0Add($event)" (delete)="grid0Delete($event)" (loadData)="grid0LoadData($event)" (rowSelect)="grid0RowSelect($event)">
+        <rz-grid-column property="czy_byl" title="Obecność" type="boolean">
+        </rz-grid-column>
+        <rz-grid-column filterProperty="Uczen.adres" property="uczen_id" sortProperty="Uczen.adres" title="Uczeń" type="string">
+          <ng-template let-data gridColumnTemplate>
+          {{data?.Uczen?.id}}
+          </ng-template>
+        </rz-grid-column>
+        <rz-grid-column filterProperty="DataOpi.opis" property="data_opis_id" sortProperty="DataOpi.opis" title="Opis" type="string">
+          <ng-template let-data gridColumnTemplate>
+          {{data?.DataOpi?.opis}}
+          </ng-template>
+        </rz-grid-column>
+        <rz-grid-column property="ocena_id" title="Ocena" type="integer">
+        </rz-grid-column>
+      </rz-grid>
+    </div>
+  </div>
+</rz-content>

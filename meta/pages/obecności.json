@@ -1,6 +1,7 @@
 {
   "access": [
-    "Authenticated"
+    "Uczeń",
+    "Rodzic"
   ],
   "components": [
     {
@@ -8,7 +9,7 @@
         {
           "name": "pageTitle",
           "size": "H1",
-          "text": "Osoba",
+          "text": "Obecności ucznia",
           "type": "heading"
         },
         {
@@ -17,9 +18,9 @@
               "class": "col-md-12",
               "components": [
                 {
-                  "addText": "Add",
-                  "allowAdd": true,
-                  "allowDelete": true,
+                  "addText": "",
+                  "allowAdd": false,
+                  "allowDelete": false,
                   "allowFiltering": true,
                   "allowMultiSorting": false,
                   "allowPaging": true,
@@ -28,77 +29,72 @@
                   "clearFilterText": "Clear",
                   "columns": [
                     {
-                      "property": "osoba_id",
-                      "title": "Osoba Id",
+                      "property": "czy_byl",
+                      "title": "Obecność",
+                      "type": "boolean"
+                    },
+                    {
+                      "editTemplate": "",
+                      "filterProperty": "Uczen.adres",
+                      "filterValue": "",
+                      "property": "uczen_id",
+                      "sortProperty": "Uczen.adres",
+                      "template": "${data.Uczen?.id}",
+                      "title": "Uczeń",
+                      "type": "string"
+                    },
+                    {
+                      "filterProperty": "DataOpi.opis",
+                      "property": "data_opis_id",
+                      "sortProperty": "DataOpi.opis",
+                      "template": "${data.DataOpi?.opis}",
+                      "title": "Opis",
+                      "type": "string"
+                    },
+                    {
+                      "property": "ocena_id",
+                      "title": "Ocena",
                       "type": "integer"
-                    },
-                    {
-                      "property": "nazwisko",
-                      "title": "Nazwisko",
-                      "type": "string"
-                    },
-                    {
-                      "format": "",
-                      "property": "email",
-                      "title": "Email",
-                      "type": "string"
-                    },
-                    {
-                      "property": "telefon",
-                      "title": "Telefon",
-                      "type": "string"
-                    },
-                    {
-                      "format": "",
-                      "property": "haslo",
-                      "title": "Haslo",
-                      "type": "string",
-                      "visible": true
-                    },
-                    {
-                      "property": "imie",
-                      "title": "Imie",
-                      "type": "string"
                     }
                   ],
-                  "confirmDelete": true,
-                  "confirmDeleteCancelText": "Cancel",
-                  "confirmDeleteOkText": "Ok",
-                  "confirmDeleteText": "Are you sure you want to delete this record?",
-                  "confirmDeleteTitle": "Confirmation",
+                  "confirmDelete": false,
+                  "confirmDeleteCancelText": "",
+                  "confirmDeleteOkText": "",
+                  "confirmDeleteText": "",
+                  "confirmDeleteTitle": "",
                   "containsText": "Contains",
-                  "count": "${getOsobasCount}",
-                  "data": "${getOsobasResult}",
-                  "emptyText": "No records to display.",
+                  "count": "${getObecnoscsCount}",
+                  "data": "${getObecnoscsResult}",
+                  "emptyText": "Brak obecności.",
                   "endsWithText": "Ends with",
                   "equalsText": "Equals",
                   "events": {
                     "add": [
                       {
-                        "path": "add-osoba",
-                        "type": "popup"
+                        "path": "add-obecnosc-view",
+                        "type": "navigate"
                       }
                     ],
                     "delete": [
                       {
                         "error": [
                           {
-                            "detail": "Unable to delete Osoba",
+                            "detail": "Unable to delete Obecnosc",
                             "severity": "error",
                             "summary": "Error",
                             "type": "notify"
                           }
                         ],
-                        "name": "Baza.deleteOsoba",
+                        "name": "Baza.deleteObecnosc",
                         "parameters": [
                           {
-                            "name": "osoba_id",
-                            "value": "${event.osoba_id}"
+                            "name": "ocena_id",
+                            "value": "${event.ocena_id}"
                           }
                         ],
                         "then": [
                           {
-                            "detail": "Osoba deleted!",
+                            "detail": "Obecnosc deleted!",
                             "severity": "success",
                             "summary": "Success",
                             "type": "notify"
@@ -111,13 +107,13 @@
                       {
                         "error": [
                           {
-                            "detail": "Unable to load Osobas",
+                            "detail": "Unable to load Obecnoscs",
                             "severity": "error",
                             "summary": "Error",
                             "type": "notify"
                           }
                         ],
-                        "name": "Baza.getOsobas",
+                        "name": "Baza.getObecnoscs",
                         "parameters": [
                           {
                             "name": "$top",
@@ -141,17 +137,17 @@
                           },
                           {
                             "name": "$expand",
-                            "value": "Rodzics,Nauczyciels,Uczens"
+                            "value": "Uczen,DataOpi"
                           }
                         ],
                         "then": [
                           {
-                            "name": "getOsobasResult",
+                            "name": "getObecnoscsResult",
                             "type": "set",
                             "value": "${result.value}"
                           },
                           {
-                            "name": "getOsobasCount",
+                            "name": "getObecnoscsCount",
                             "type": "set",
                             "value": "event.top != null && event.skip != null ? result['@odata.count'] : ${result.value.length}"
                           }
@@ -163,12 +159,12 @@
                       {
                         "parameters": [
                           {
-                            "name": "osoba_id",
-                            "value": "${event.osoba_id}"
+                            "name": "ocena_id",
+                            "value": "${event.ocena_id}"
                           }
                         ],
-                        "path": "edit-osoba",
-                        "type": "popup"
+                        "path": "edit-obecnosc-view",
+                        "type": "navigate"
                       }
                     ]
                   },
@@ -202,5 +198,5 @@
     ]
   },
   "layout": "Main",
-  "name": "Osoba"
+  "name": "Obecności"
 }

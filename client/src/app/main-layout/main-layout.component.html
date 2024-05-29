@@ -30,17 +30,21 @@
 </rz-body>
 <rz-sidebar #sidebar0>
   <rz-panelmenu #panelmenu0 [style]="{'height': '100%'}">
-    <rz-panelmenu-item text="Osoba" path="osoba" *ngIf="security?.isInRole(['Authenticated'])">
+    <rz-panelmenu-item text="Użytkownicy" path="użytkownicy" *ngIf="security?.isInRole(['Admin'])">
     </rz-panelmenu-item>
-    <rz-panelmenu-item text="Klasa" path="klasa" *ngIf="security?.isInRole(['Authenticated'])">
+    <rz-panelmenu-item text="Klasy" path="klasy" *ngIf="security?.isInRole(['Admin'])">
     </rz-panelmenu-item>
-    <rz-panelmenu-item text="Nauczyciel" path="nauczyciel" *ngIf="security?.isInRole(['Authenticated'])">
+    <rz-panelmenu-item text="Nauczyciel" path="nauczyciel" *ngIf="security?.isInRole(['Admin'])">
     </rz-panelmenu-item>
-    <rz-panelmenu-item text="Rodzic" path="rodzic" *ngIf="security?.isInRole(['Authenticated', 'Admin'])">
+    <rz-panelmenu-item text="Rodzic" path="rodzic" *ngIf="security?.isInRole(['Admin'])">
     </rz-panelmenu-item>
-    <rz-panelmenu-item text="Uczen" path="uczen" *ngIf="security?.isInRole(['Admin', 'Authenticated'])">
+    <rz-panelmenu-item text="Uczen" path="uczen" *ngIf="security?.isInRole(['Admin'])">
     </rz-panelmenu-item>
     <rz-panelmenu-item text="Ocena" path="ocena" *ngIf="security?.isInRole(['Nauczyciel'])">
+    </rz-panelmenu-item>
+    <rz-panelmenu-item text="Obecnosc" path="obecnosc" *ngIf="security?.isInRole(['Nauczyciel'])">
+    </rz-panelmenu-item>
+    <rz-panelmenu-item text="Obecności" path="obecności" *ngIf="security?.isInRole(['Uczeń', 'Rodzic'])">
     </rz-panelmenu-item>
   </rz-panelmenu>
 </rz-sidebar>

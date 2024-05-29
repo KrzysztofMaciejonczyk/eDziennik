@@ -1,0 +1,439 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Czy Byl",
+                              "component": "czy_byl",
+                              "name": "czy_bylLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "type": "checkbox",
+                              "name": "czy_byl",
+                              "triState": true,
+                              "value": "${obecnosc.czy_byl}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Uczen",
+                              "component": "uczen_id",
+                              "name": "uczen_idLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getUczensForuczen_idResult}",
+                              "textProperty": "adres",
+                              "valueProperty": "uczen_id",
+                              "placeholder": "Choose Uczen",
+                              "count": "${getUczensForuczen_idCount}",
+                              "pageSize": "${getUczensForuczen_idPageSize}",
+                              "value": "${obecnosc.uczen_id}",
+                              "type": "dropdown-datagrid",
+                              "name": "uczen_id",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "selectedValue": "${getByUczensForuczen_idResult}",
+                              "events": {
+                                "loadData": [
+                                  {
+                                    "name": "Baza.getUczens",
+                                    "parameters": [
+                                      {
+                                        "name": "$top",
+                                        "value": "${event.top}"
+                                      },
+                                      {
+                                        "name": "$skip",
+                                        "value": "${event.skip}"
+                                      },
+                                      {
+                                        "name": "$orderby",
+                                        "value": "${event.orderby}"
+                                      },
+                                      {
+                                        "name": "$filter",
+                                        "value": "${event.filter}"
+                                      },
+                                      {
+                                        "name": "$count",
+                                        "value": "true"
+                                      }
+                                    ],
+                                    "then": [
+                                      {
+                                        "name": "getUczensForuczen_idResult",
+                                        "type": "set",
+                                        "value": "${result.value}"
+                                      },
+                                      {
+                                        "name": "getUczensForuczen_idCount",
+                                        "type": "set",
+                                        "value": "result['@odata.count']"
+                                      }
+                                    ],
+                                    "type": "invoke"
+                                  }
+                                ]
+                              },
+                              "emptyText": "No records to display.",
+                              "searchText": "Search..."
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Data Opi",
+                              "component": "data_opis_id",
+                              "name": "data_opis_idLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getDataOpisFordata_opis_idResult}",
+                              "textProperty": "opis",
+                              "valueProperty": "data_opis_id",
+                              "placeholder": "Choose DataOpi",
+                              "count": "${getDataOpisFordata_opis_idCount}",
+                              "pageSize": "${getDataOpisFordata_opis_idPageSize}",
+                              "value": "${obecnosc.data_opis_id}",
+                              "type": "dropdown-datagrid",
+                              "name": "data_opis_id",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "selectedValue": "${getByDataOpisFordata_opis_idResult}",
+                              "events": {
+                                "loadData": [
+                                  {
+                                    "name": "Baza.getDataOpis",
+                                    "parameters": [
+                                      {
+                                        "name": "$top",
+                                        "value": "${event.top}"
+                                      },
+                                      {
+                                        "name": "$skip",
+                                        "value": "${event.skip}"
+                                      },
+                                      {
+                                        "name": "$orderby",
+                                        "value": "${event.orderby}"
+                                      },
+                                      {
+                                        "name": "$filter",
+                                        "value": "${event.filter}"
+                                      },
+                                      {
+                                        "name": "$count",
+                                        "value": "true"
+                                      }
+                                    ],
+                                    "then": [
+                                      {
+                                        "name": "getDataOpisFordata_opis_idResult",
+                                        "type": "set",
+                                        "value": "${result.value}"
+                                      },
+                                      {
+                                        "name": "getDataOpisFordata_opis_idCount",
+                                        "type": "set",
+                                        "value": "result['@odata.count']"
+                                      }
+                                    ],
+                                    "type": "invoke"
+                                  }
+                                ]
+                              },
+                              "emptyText": "No records to display.",
+                              "searchText": "Search..."
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "back"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update Obecnosc",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "Baza.updateObecnosc",
+                        "parameters": [
+                          {
+                            "name": "ocena_id",
+                            "value": "${parameters.ocena_id}"
+                          },
+                          {
+                            "name": "Obecnosc",
+                            "value": "${event}"
+                          },
+                          {
+                            "name": "$expand",
+                            "value": "Uczen,DataOpi"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "back"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "Baza.getObecnoscByocena_id",
+        "parameters": [
+          {
+            "name": "ocena_id",
+            "value": "${parameters.ocena_id}"
+          }
+        ],
+        "then": [
+          {
+            "name": "obecnosc",
+            "type": "set",
+            "value": "${result}"
+          },
+          {
+            "name": "Baza.getUczenByuczen_id",
+            "parameters": [
+              {
+                "name": "uczen_id",
+                "value": "${this.obecnosc.uczen_id}"
+              }
+            ],
+            "then": [
+              {
+                "name": "getByUczensForuczen_idResult",
+                "type": "set",
+                "value": "${result}"
+              }
+            ],
+            "condition": "this.obecnosc.uczen_id != null",
+            "type": "invoke"
+          },
+          {
+            "name": "Baza.getDataOpiBydata_opis_id",
+            "parameters": [
+              {
+                "name": "data_opis_id",
+                "value": "${this.obecnosc.data_opis_id}"
+              }
+            ],
+            "then": [
+              {
+                "name": "getByDataOpisFordata_opis_idResult",
+                "type": "set",
+                "value": "${result}"
+              }
+            ],
+            "condition": "this.obecnosc.data_opis_id != null",
+            "type": "invoke"
+          }
+        ],
+        "error": [],
+        "type": "invoke"
+      },
+      {
+        "name": "getUczensForuczen_idPageSize",
+        "type": "set",
+        "value": "10"
+      },
+      {
+        "name": "Baza.getUczens",
+        "parameters": [
+          {
+            "name": "$top",
+            "value": "${getUczensForuczen_idPageSize}"
+          },
+          {
+            "name": "$skip",
+            "value": "0"
+          },
+          {
+            "name": "$count",
+            "value": "true"
+          }
+        ],
+        "then": [
+          {
+            "name": "getUczensForuczen_idResult",
+            "type": "set",
+            "value": "${result.value}"
+          },
+          {
+            "name": "getUczensForuczen_idCount",
+            "type": "set",
+            "value": "result['@odata.count']"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "getDataOpisFordata_opis_idPageSize",
+        "type": "set",
+        "value": "10"
+      },
+      {
+        "name": "Baza.getDataOpis",
+        "parameters": [
+          {
+            "name": "$top",
+            "value": "${getDataOpisFordata_opis_idPageSize}"
+          },
+          {
+            "name": "$skip",
+            "value": "0"
+          },
+          {
+            "name": "$count",
+            "value": "true"
+          }
+        ],
+        "then": [
+          {
+            "name": "getDataOpisFordata_opis_idResult",
+            "type": "set",
+            "value": "${result.value}"
+          },
+          {
+            "name": "getDataOpisFordata_opis_idCount",
+            "type": "set",
+            "value": "result['@odata.count']"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Edit Obecnosc",
+  "access": [
+    "Nauczyciel"
+  ],
+  "layout": "Main"
+}

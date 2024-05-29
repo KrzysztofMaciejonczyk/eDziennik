@@ -1,6 +1,5 @@
 {
   "access": [
-    "Authenticated",
     "Admin"
   ],
   "components": [

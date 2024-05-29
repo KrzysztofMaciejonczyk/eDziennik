@@ -11,18 +11,20 @@
   "logo": "",
   "name": "eDziennik",
   "navigation": [
-    "Osoba",
-    "Klasa",
+    "Użytkownicy",
+    "Klasy",
     "Nauczyciel",
     "Rodzic",
     "Uczen",
-    "Ocena"
+    "Ocena",
+    "Obecnosc",
+    "Obecności"
   ],
   "pages": [
-    "Osoba",
+    "Użytkownicy",
     "Add Osoba",
     "Edit Osoba",
-    "Klasa",
+    "Klasy",
     "Add Klasa",
     "Edit Klasa",
     "Nauczyciel",
@@ -45,7 +47,11 @@
     "Edit Uczen",
     "Ocena",
     "Add Ocena",
-    "Edit Ocena"
+    "Edit Ocena",
+    "Obecnosc",
+    "Add Obecnosc",
+    "Edit Obecnosc",
+    "Obecności"
   ],
   "security": {
     "autoGeneratePages": true,
@@ -66,6 +72,6 @@
   "serverLang": "cs",
   "serverProject": true,
   "serverVersion": "7",
-  "startPage": "Osoba",
+  "startPage": "Użytkownicy",
   "theme": "default"
 }

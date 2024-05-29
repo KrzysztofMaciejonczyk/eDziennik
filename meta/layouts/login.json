@@ -1,12 +1,18 @@
 {
   "components": [
     {
+      "attributes": [
+        {
+          "name": "Expanded",
+          "value": "true"
+        }
+      ],
       "components": [
         {
           "class": "justify-content-center",
           "components": [
             {
-              "class": "justify-content-center col-xl-5 col-md-7",
+              "class": "justify-content-center  col-md-7 col-xl-7 offset-xl-3",
               "components": [
                 {
                   "components": [
@@ -17,29 +23,30 @@
                   ],
                   "name": "card0",
                   "style": {
-                    "marginTop": "8rem"
+                    "marginTop": "8rem",
+                    "width": "525.140625px"
                   },
                   "type": "card"
                 }
               ],
               "name": "col0",
+              "style": {
+                "height": "278px"
+              },
               "type": "col"
             }
           ],
           "name": "row0",
+          "style": {
+            "height": "286px"
+          },
           "type": "row"
         }
       ],
+      "name": "body0",
       "style": {
         "marginLeft": "0px"
       },
-      "attributes": [
-        {
-          "name": "Expanded",
-          "value": "true"
-        }
-      ],
-      "name": "body0",
       "type": "body"
     }
   ],

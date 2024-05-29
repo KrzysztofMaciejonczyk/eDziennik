@@ -3,10 +3,10 @@ import { Routes, RouterModule, ActivatedRoute } from '@angular/router';
 
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
-import { OsobaComponent } from './osoba/osoba.component';
+import { UzytkownicyComponent } from './użytkownicy/użytkownicy.component';
 import { AddOsobaComponent } from './add-osoba/add-osoba.component';
 import { EditOsobaComponent } from './edit-osoba/edit-osoba.component';
-import { KlasaComponent } from './klasa/klasa.component';
+import { KlasyComponent } from './klasy/klasy.component';
 import { AddKlasaComponent } from './add-klasa/add-klasa.component';
 import { EditKlasaComponent } from './edit-klasa/edit-klasa.component';
 import { NauczycielComponent } from './nauczyciel/nauczyciel.component';
@@ -30,22 +30,26 @@ import { EditUczenComponent } from './edit-uczen/edit-uczen.component';
 import { OcenaComponent } from './ocena/ocena.component';
 import { AddOcenaComponent } from './add-ocena/add-ocena.component';
 import { EditOcenaComponent } from './edit-ocena/edit-ocena.component';
+import { ObecnoscComponent } from './obecnosc/obecnosc.component';
+import { AddObecnoscComponent } from './add-obecnosc/add-obecnosc.component';
+import { EditObecnoscComponent } from './edit-obecnosc/edit-obecnosc.component';
+import { ObecnosciComponent } from './obecności/obecności.component';
 
 import { SecurityService } from './security.service';
 import { AuthGuard } from './auth.guard';
 export const routes: Routes = [
-  { path: '', redirectTo: '/osoba', pathMatch: 'full' },
+  { path: '', redirectTo: '/użytkownicy', pathMatch: 'full' },
   {
     path: '',
     component: MainLayoutComponent,
     children: [
       {
-        path: 'osoba',
+        path: 'użytkownicy',
         canActivate: [AuthGuard],
         data: {
-          roles: ['Authenticated'],
+          roles: ['Admin'],
         },
-        component: OsobaComponent
+        component: UzytkownicyComponent
       },
       {
         path: 'add-osoba',
@@ -64,12 +68,12 @@ export const routes: Routes = [
         component: EditOsobaComponent
       },
       {
-        path: 'klasa',
+        path: 'klasy',
         canActivate: [AuthGuard],
         data: {
-          roles: ['Authenticated'],
+          roles: ['Admin'],
         },
-        component: KlasaComponent
+        component: KlasyComponent
       },
       {
         path: 'add-klasa',
@@ -91,7 +95,7 @@ export const routes: Routes = [
         path: 'nauczyciel',
         canActivate: [AuthGuard],
         data: {
-          roles: ['Authenticated'],
+          roles: ['Admin'],
         },
         component: NauczycielComponent
       },
@@ -177,7 +181,7 @@ export const routes: Routes = [
         path: 'rodzic',
         canActivate: [AuthGuard],
         data: {
-          roles: ['Authenticated', 'Admin'],
+          roles: ['Admin'],
         },
         component: RodzicComponent
       },
@@ -201,7 +205,7 @@ export const routes: Routes = [
         path: 'uczen',
         canActivate: [AuthGuard],
         data: {
-          roles: ['Admin', 'Authenticated'],
+          roles: ['Admin'],
         },
         component: UczenComponent
       },
@@ -244,6 +248,38 @@ export const routes: Routes = [
           roles: ['Authenticated', 'Nauczyciel'],
         },
         component: EditOcenaComponent
+      },
+      {
+        path: 'obecnosc',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['Nauczyciel'],
+        },
+        component: ObecnoscComponent
+      },
+      {
+        path: 'add-obecnosc',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['Nauczyciel'],
+        },
+        component: AddObecnoscComponent
+      },
+      {
+        path: 'edit-obecnosc/:ocena_id',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['Nauczyciel'],
+        },
+        component: EditObecnoscComponent
+      },
+      {
+        path: 'obecności',
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['Uczeń', 'Rodzic'],
+        },
+        component: ObecnosciComponent
       },
     ]
   },

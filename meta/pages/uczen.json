@@ -208,8 +208,7 @@
   },
   "name": "Uczen",
   "access": [
-    "Admin",
-    "Authenticated"
+    "Admin"
   ],
   "layout": "Main"
 }
