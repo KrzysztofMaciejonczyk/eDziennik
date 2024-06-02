@@ -4,47 +4,21 @@
   ],
   "components": [
     {
-      "type": "content",
-      "container": "main",
       "components": [
         {
-          "type": "heading",
           "name": "pageTitle",
           "size": "H1",
-          "text": "Profile"
+          "text": "Profil użytkownika",
+          "type": "heading"
         },
         {
-          "type": "row",
           "components": [
             {
-              "type": "col",
               "class": "col-md-12",
               "components": [
                 {
-                  "fields": [
-                    {
-                      "type": "password",
-                      "property": "OldPassword",
-                      "required": true,
-                      "title": "Old Password",
-                      "requiredText": "is required"
-                    },
-                    {
-                      "type": "password",
-                      "property": "NewPassword",
-                      "required": true,
-                      "title": "New Password",
-                      "requiredText": "is required"
-                    },
-                    {
-                      "type": "password",
-                      "property": "ConfirmPassword",
-                      "compare": "NewPassword",
-                      "required": true,
-                      "title": "Confirm password",
-                      "requiredText": "is required"
-                    }
-                  ],
+                  "cancelText": "Anuluj",
+                  "deleteText": "Usuń",
                   "events": {
                     "cancel": [
                       {
@@ -61,14 +35,6 @@
                             "type": "notify"
                           }
                         ],
-                        "then": [
-                          {
-                            "detail": "Password has been changed.",
-                            "severity": "info",
-                            "summary": "Success",
-                            "type": "notify"
-                          }
-                        ],
                         "name": "Security.changePassword",
                         "parameters": [
                           {
@@ -80,21 +46,57 @@
                             "value": "${event.NewPassword}"
                           }
                         ],
+                        "then": [
+                          {
+                            "detail": "Password has been changed.",
+                            "severity": "info",
+                            "summary": "Success",
+                            "type": "notify"
+                          }
+                        ],
                         "type": "invoke"
                       }
                     ]
                   },
-                  "submitText": "Change password",
+                  "fields": [
+                    {
+                      "property": "OldPassword",
+                      "required": true,
+                      "requiredText": "is required",
+                      "title": "Stare hasło",
+                      "type": "password"
+                    },
+                    {
+                      "property": "NewPassword",
+                      "required": true,
+                      "requiredText": "is required",
+                      "title": "Nowe hasło",
+                      "type": "password"
+                    },
+                    {
+                      "compare": "NewPassword",
+                      "property": "ConfirmPassword",
+                      "required": true,
+                      "requiredText": "is required",
+                      "title": "Potwierdź hasło",
+                      "type": "password"
+                    }
+                  ],
                   "name": "form0",
+                  "submitText": "Zmień hasło",
                   "type": "form"
                 }
-              ]
+              ],
+              "type": "col"
             }
-          ]
+          ],
+          "type": "row"
         }
-      ]
+      ],
+      "container": "main",
+      "type": "content"
     }
   ],
-  "name": "Profile",
-  "layout": "Main"
+  "layout": "Main",
+  "name": "Profile"
 }

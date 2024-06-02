@@ -11,6 +11,8 @@
               "class": "col-md-12",
               "components": [
                 {
+                  "cancelText": "Anuluj",
+                  "deleteText": "Usuń",
                   "events": {
                     "submit": [
                       {
@@ -54,7 +56,7 @@
                       "property": "RoleNames",
                       "requiredText": "is required",
                       "textProperty": "Name",
-                      "title": "Roles",
+                      "title": "Rola",
                       "type": "lookup",
                       "valueProperty": "Name"
                     },
@@ -62,7 +64,7 @@
                       "property": "Password",
                       "required": true,
                       "requiredText": "is required",
-                      "title": "Password",
+                      "title": "Hasło",
                       "type": "password"
                     },
                     {
@@ -70,12 +72,12 @@
                       "property": "ConfirmPassword",
                       "required": true,
                       "requiredText": "is required",
-                      "title": "Confirm password",
+                      "title": "Potwierdź hasło",
                       "type": "password"
                     }
                   ],
                   "name": "form0",
-                  "submitText": "Save",
+                  "submitText": "Zapisz",
                   "type": "form"
                 }
               ],

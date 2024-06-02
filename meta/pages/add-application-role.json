@@ -4,18 +4,16 @@
   ],
   "components": [
     {
-      "type": "content",
-      "container": "main",
       "components": [
         {
-          "type": "row",
           "components": [
             {
-              "type": "col",
               "class": "col-md-12",
               "components": [
                 {
+                  "cancelText": "Anuluj",
                   "data": "",
+                  "deleteText": "Usuń",
                   "events": {
                     "cancel": [
                       {
@@ -24,6 +22,14 @@
                     ],
                     "submit": [
                       {
+                        "error": [
+                          {
+                            "detail": "${result.error.message}",
+                            "severity": "error",
+                            "summary": "Cannot create role",
+                            "type": "notify"
+                          }
+                        ],
                         "name": "Security.createRole",
                         "parameters": [
                           {
@@ -37,14 +43,6 @@
                             "type": "navigate"
                           }
                         ],
-                        "error": [
-                          {
-                            "severity": "error",
-                            "summary": "Cannot create role",
-                            "detail": "${result.error.message}",
-                            "type": "notify"
-                          }
-                        ],
                         "type": "invoke"
                       }
                     ]
@@ -53,21 +51,26 @@
                     {
                       "property": "Name",
                       "required": true,
-                      "title": "Name",
-                      "type": "string",
-                      "requiredText": "is required"
+                      "requiredText": "is required",
+                      "title": "Nazwa",
+                      "type": "string"
                     }
                   ],
                   "name": "form0",
+                  "submitText": "Zapisz",
                   "type": "form"
                 }
-              ]
+              ],
+              "type": "col"
             }
-          ]
+          ],
+          "type": "row"
         }
-      ]
+      ],
+      "container": "main",
+      "type": "content"
     }
   ],
-  "name": "Add Application Role",
-  "layout": "Main"
+  "layout": "Main",
+  "name": "Add Application Role"
 }

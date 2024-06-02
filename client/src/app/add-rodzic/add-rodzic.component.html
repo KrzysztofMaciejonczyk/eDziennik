@@ -8,15 +8,15 @@
             </rz-label>
           </div>
           <div class="col-md-9">
-            <rz-dropdown-datagrid #osobaId [count]="getOsobasForosoba_idCount" [data]="getOsobasForosoba_idResult" emptyText="No records to display." [pageSize]="getOsobasForosoba_idPageSize" placeholder="Choose Osoba" searchText="Search..." [style]="{'width': '100%'}" textProperty="osoba_id" valueProperty="osoba_id" name="osoba_id" (loadData)="osoba_idLoadData($event)">
+            <rz-dropdown-datagrid #osobaId [count]="getOsobasForosoba_idCount" [data]="getOsobasForosoba_idResult" emptyText="Brak wyników do wyświetlenia." [pageSize]="getOsobasForosoba_idPageSize" placeholder="Wybierz osobę" searchText="Szukaj..." [style]="{'width': '100%'}" textProperty="osoba_id" valueProperty="osoba_id" name="osoba_id" (loadData)="osoba_idLoadData($event)">
             </rz-dropdown-datagrid>
           </div>
         </div>
         <div class="row">
           <div class="col offset-sm-3">
-            <rz-button #button1 buttonStyle="primary" buttonType="submit" icon="save" text="Save">
+            <rz-button #button1 buttonStyle="primary" buttonType="submit" icon="save" text="Zapisz">
             </rz-button>
-            <rz-button #button2 buttonStyle="light" [style]="{'marginLeft': '1rem'}" text="Cancel" (click)="button2Click($event)">
+            <rz-button #button2 buttonStyle="light" [style]="{'marginLeft': '1rem'}" text="Anuluj" (click)="button2Click($event)">
             </rz-button>
           </div>
         </div>

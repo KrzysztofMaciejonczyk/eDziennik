@@ -1,0 +1,26 @@
+{
+  "access": [
+    "Authenticated"
+  ],
+  "components": [
+    {
+      "components": [
+        {
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "Panel główny",
+          "type": "heading"
+        },
+        {
+          "name": "image0",
+          "path": "/assets/images/logo.png",
+          "type": "image"
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "layout": "Main",
+  "name": "Panel"
+}

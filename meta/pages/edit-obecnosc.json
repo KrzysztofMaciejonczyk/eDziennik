@@ -1,94 +1,76 @@
 {
+  "access": [
+    "Nauczyciel"
+  ],
   "components": [
     {
-      "type": "content",
-      "container": "main",
       "components": [
         {
-          "type": "row",
           "components": [
             {
-              "type": "col",
               "class": "col-md-12",
               "components": [
                 {
-                  "type": "template-form",
-                  "name": "form0",
                   "components": [
                     {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
                       "components": [
                         {
-                          "type": "col",
                           "class": "col-md-3",
                           "components": [
                             {
-                              "type": "label",
-                              "text": "Czy Byl",
                               "component": "czy_byl",
                               "name": "czy_bylLabel",
                               "style": {
                                 "width": "100%"
-                              }
+                              },
+                              "text": "Obecność",
+                              "type": "label"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         },
                         {
-                          "type": "col",
                           "class": "col-md-9",
                           "components": [
                             {
-                              "type": "checkbox",
                               "name": "czy_byl",
                               "triState": true,
+                              "type": "checkbox",
                               "value": "${obecnosc.czy_byl}"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
-                    },
-                    {
-                      "type": "row",
+                      ],
                       "style": {
                         "marginBottom": "1rem"
                       },
+                      "type": "row"
+                    },
+                    {
                       "components": [
                         {
-                          "type": "col",
                           "class": "col-md-3",
                           "components": [
                             {
-                              "type": "label",
-                              "text": "Uczen",
                               "component": "uczen_id",
                               "name": "uczen_idLabel",
                               "style": {
                                 "width": "100%"
-                              }
+                              },
+                              "text": "Uczeń",
+                              "type": "label"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         },
                         {
-                          "type": "col",
                           "class": "col-md-9",
                           "components": [
                             {
-                              "data": "${getUczensForuczen_idResult}",
-                              "textProperty": "adres",
-                              "valueProperty": "uczen_id",
-                              "placeholder": "Choose Uczen",
                               "count": "${getUczensForuczen_idCount}",
-                              "pageSize": "${getUczensForuczen_idPageSize}",
-                              "value": "${obecnosc.uczen_id}",
-                              "type": "dropdown-datagrid",
-                              "name": "uczen_id",
-                              "style": {
-                                "width": "100%"
-                              },
-                              "selectedValue": "${getByUczensForuczen_idResult}",
+                              "data": "${getUczensForuczen_idResult}",
+                              "emptyText": "Brak rekordów",
                               "events": {
                                 "loadData": [
                                   {
@@ -131,52 +113,52 @@
                                   }
                                 ]
                               },
-                              "emptyText": "No records to display.",
-                              "searchText": "Search..."
+                              "name": "uczen_id",
+                              "pageSize": "${getUczensForuczen_idPageSize}",
+                              "placeholder": "Wybierz ucznia",
+                              "searchText": "Szukaj...",
+                              "selectedValue": "${getByUczensForuczen_idResult}",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "textProperty": "adres",
+                              "type": "dropdown-datagrid",
+                              "value": "${obecnosc.uczen_id}",
+                              "valueProperty": "uczen_id"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
-                    },
-                    {
-                      "type": "row",
+                      ],
                       "style": {
                         "marginBottom": "1rem"
                       },
+                      "type": "row"
+                    },
+                    {
                       "components": [
                         {
-                          "type": "col",
                           "class": "col-md-3",
                           "components": [
                             {
-                              "type": "label",
-                              "text": "Data Opi",
                               "component": "data_opis_id",
                               "name": "data_opis_idLabel",
                               "style": {
                                 "width": "100%"
-                              }
+                              },
+                              "text": "Opis",
+                              "type": "label"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         },
                         {
-                          "type": "col",
                           "class": "col-md-9",
                           "components": [
                             {
-                              "data": "${getDataOpisFordata_opis_idResult}",
-                              "textProperty": "opis",
-                              "valueProperty": "data_opis_id",
-                              "placeholder": "Choose DataOpi",
                               "count": "${getDataOpisFordata_opis_idCount}",
-                              "pageSize": "${getDataOpisFordata_opis_idPageSize}",
-                              "value": "${obecnosc.data_opis_id}",
-                              "type": "dropdown-datagrid",
-                              "name": "data_opis_id",
-                              "style": {
-                                "width": "100%"
-                              },
-                              "selectedValue": "${getByDataOpisFordata_opis_idResult}",
+                              "data": "${getDataOpisFordata_opis_idResult}",
+                              "emptyText": "Brak rekordów.",
                               "events": {
                                 "loadData": [
                                   {
@@ -219,45 +201,60 @@
                                   }
                                 ]
                               },
-                              "emptyText": "No records to display.",
-                              "searchText": "Search..."
+                              "name": "data_opis_id",
+                              "pageSize": "${getDataOpisFordata_opis_idPageSize}",
+                              "placeholder": "Wybierz opis",
+                              "searchText": "Szukaj...",
+                              "selectedValue": "${getByDataOpisFordata_opis_idResult}",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "textProperty": "opis",
+                              "type": "dropdown-datagrid",
+                              "value": "${obecnosc.data_opis_id}",
+                              "valueProperty": "data_opis_id"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
                     },
                     {
-                      "type": "row",
                       "components": [
                         {
-                          "type": "col",
                           "class": "col offset-sm-3",
                           "components": [
                             {
-                              "type": "button",
+                              "buttonStyle": "primary",
                               "buttonType": "submit",
                               "icon": "save",
-                              "text": "Save",
-                              "buttonStyle": "primary"
+                              "text": "Zapisz",
+                              "type": "button"
                             },
                             {
-                              "type": "button",
                               "buttonStyle": "light",
-                              "style": {
-                                "marginLeft": "1rem"
-                              },
-                              "text": "Cancel",
                               "events": {
                                 "click": [
                                   {
                                     "type": "back"
                                   }
                                 ]
-                              }
+                              },
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Anuluj",
+                              "type": "button"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
+                      ],
+                      "type": "row"
                     }
                   ],
                   "events": {
@@ -294,18 +291,25 @@
                         "type": "invoke"
                       }
                     ]
-                  }
+                  },
+                  "name": "form0",
+                  "type": "template-form"
                 }
-              ]
+              ],
+              "type": "col"
             }
-          ]
+          ],
+          "type": "row"
         }
-      ]
+      ],
+      "container": "main",
+      "type": "content"
     }
   ],
   "events": {
     "load": [
       {
+        "error": [],
         "name": "Baza.getObecnoscByocena_id",
         "parameters": [
           {
@@ -320,6 +324,7 @@
             "value": "${result}"
           },
           {
+            "condition": "this.obecnosc.uczen_id != null",
             "name": "Baza.getUczenByuczen_id",
             "parameters": [
               {
@@ -334,10 +339,10 @@
                 "value": "${result}"
               }
             ],
-            "condition": "this.obecnosc.uczen_id != null",
             "type": "invoke"
           },
           {
+            "condition": "this.obecnosc.data_opis_id != null",
             "name": "Baza.getDataOpiBydata_opis_id",
             "parameters": [
               {
@@ -352,11 +357,9 @@
                 "value": "${result}"
               }
             ],
-            "condition": "this.obecnosc.data_opis_id != null",
             "type": "invoke"
           }
         ],
-        "error": [],
         "type": "invoke"
       },
       {
@@ -431,9 +434,6 @@
       }
     ]
   },
-  "name": "Edit Obecnosc",
-  "access": [
-    "Nauczyciel"
-  ],
-  "layout": "Main"
+  "layout": "Main",
+  "name": "Edit Obecnosc"
 }

@@ -15,8 +15,8 @@ import { HeadingComponent } from '@radzen/angular/dist/heading';
 import { GridComponent } from '@radzen/angular/dist/grid';
 
 import { ConfigService } from '../config.service';
-import { EditApplicationUserComponent } from '../edit-application-user/edit-application-user.component';
 import { AddApplicationUserComponent } from '../add-application-user/add-application-user.component';
+import { EditApplicationUserComponent } from '../edit-application-user/edit-application-user.component';
 
 import { SecurityService } from '../security.service';
 
@@ -107,6 +107,10 @@ export class ApplicationUsersGenerated implements AfterViewInit, OnInit, OnDestr
     });
   }
 
+  grid0Add(event: any) {
+    this.dialogService.open(AddApplicationUserComponent, { parameters: {}, title: 'Add Application User' });
+  }
+
   grid0Delete(event: any) {
     this.security.deleteUser(`${event.Id}`)
     .subscribe((result: any) => {
@@ -118,9 +122,5 @@ export class ApplicationUsersGenerated implements AfterViewInit, OnInit, OnDestr
 
   grid0RowSelect(event: any) {
     this.dialogService.open(EditApplicationUserComponent, { parameters: {Id: event.Id}, title: 'Edit Application User' });
-  }
-
-  grid0Add(event: any) {
-    this.dialogService.open(AddApplicationUserComponent, { parameters: {}, title: 'Add Application User' });
   }
 }

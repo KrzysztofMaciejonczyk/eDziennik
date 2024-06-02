@@ -107,15 +107,8 @@ export class ObecnoscGenerated implements AfterViewInit, OnInit, OnDestroy {
     this.grid0.load();
   }
 
-  grid0LoadData(event: any) {
-    this.baza.getObecnoscs(`${event.filter}`, event.top, event.skip, `${event.orderby}`, event.top != null && event.skip != null, `Uczen,DataOpi`, null, null)
-    .subscribe((result: any) => {
-      this.getObecnoscsResult = result.value;
-
-      this.getObecnoscsCount = event.top != null && event.skip != null ? result['@odata.count'] : result.value.length;
-    }, (result: any) => {
-      this.notificationService.notify({ severity: "error", summary: `Error`, detail: `Unable to load Obecnoscs` });
-    });
+  grid0Add(event: any) {
+    this.dialogService.open(AddObecnoscComponent, { parameters: {}, title: 'Add Obecnosc' });
   }
 
   grid0Delete(event: any) {
@@ -127,8 +120,15 @@ export class ObecnoscGenerated implements AfterViewInit, OnInit, OnDestroy {
     });
   }
 
-  grid0Add(event: any) {
-    this.dialogService.open(AddObecnoscComponent, { parameters: {}, title: 'Add Obecnosc' });
+  grid0LoadData(event: any) {
+    this.baza.getObecnoscs(`${event.filter}`, event.top, event.skip, `${event.orderby}`, event.top != null && event.skip != null, `Uczen,DataOpi`, null, null)
+    .subscribe((result: any) => {
+      this.getObecnoscsResult = result.value;
+
+      this.getObecnoscsCount = event.top != null && event.skip != null ? result['@odata.count'] : result.value.length;
+    }, (result: any) => {
+      this.notificationService.notify({ severity: "error", summary: `Error`, detail: `Unable to load Obecnoscs` });
+    });
   }
 
   grid0RowSelect(event: any) {

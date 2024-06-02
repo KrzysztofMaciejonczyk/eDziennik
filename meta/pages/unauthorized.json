@@ -4,34 +4,34 @@
   ],
   "components": [
     {
-      "type": "content",
-      "container": "main",
       "components": [
         {
-          "type": "heading",
           "name": "pageTitle",
           "size": "H1",
-          "text": "Unauthorized"
+          "text": "Brak autoryzacji",
+          "type": "heading"
         },
         {
-          "type": "row",
           "components": [
             {
-              "type": "col",
               "class": "col-md-12",
               "components": [
                 {
-                  "content": "The current user is not authorized to see this page.",
+                  "content": "Użytkownik nie jest autoryzowany do zobaczenia tej strony.",
                   "name": "html0",
                   "type": "html"
                 }
-              ]
+              ],
+              "type": "col"
             }
-          ]
+          ],
+          "type": "row"
         }
-      ]
+      ],
+      "container": "main",
+      "type": "content"
     }
   ],
-  "name": "Unauthorized",
-  "layout": "Main"
+  "layout": "Main",
+  "name": "Unauthorized"
 }

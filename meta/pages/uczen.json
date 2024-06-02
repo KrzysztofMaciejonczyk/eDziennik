@@ -1,36 +1,130 @@
 {
+  "access": [
+    "Admin"
+  ],
   "components": [
     {
-      "type": "content",
-      "container": "main",
       "components": [
         {
-          "type": "heading",
           "name": "pageTitle",
           "size": "H1",
-          "text": "Uczen"
+          "text": "Uczniowie",
+          "type": "heading"
         },
         {
-          "type": "row",
           "components": [
             {
-              "type": "col",
               "class": "col-md-12",
               "components": [
                 {
-                  "name": "grid0",
-                  "allowDelete": true,
-                  "confirmDelete": true,
+                  "addText": "Dodaj ucznia",
                   "allowAdd": true,
+                  "allowDelete": true,
                   "allowFiltering": true,
                   "allowMultiSorting": false,
                   "allowPaging": true,
                   "allowSorting": true,
+                  "applyFilterText": "Apply",
+                  "clearFilterText": "Clear",
+                  "columns": [
+                    {
+                      "format": "date-time",
+                      "formatString": "medium",
+                      "property": "data_urodzenia",
+                      "title": "Data urodzenia",
+                      "type": "string"
+                    },
+                    {
+                      "filterProperty": "Osoba.imie",
+                      "property": "osoba_id",
+                      "sortProperty": "Osoba.imie",
+                      "template": "${data.Osoba?.imie}",
+                      "title": "Osoba_ID",
+                      "type": "string"
+                    },
+                    {
+                      "filterProperty": "Rodzic.rodzic_id",
+                      "property": "rodzic_id",
+                      "sortProperty": "Rodzic.rodzic_id",
+                      "template": "${data.Rodzic?.rodzic_id}",
+                      "title": "Rodzic_ID",
+                      "type": "integer"
+                    },
+                    {
+                      "filterProperty": "Klasa.nazwa",
+                      "property": "klasa_id",
+                      "sortProperty": "Klasa.nazwa",
+                      "template": "${data.Klasa?.nazwa}",
+                      "title": "Klasa_ID",
+                      "type": "string"
+                    },
+                    {
+                      "property": "uczen_id",
+                      "title": "Uczen_ID",
+                      "type": "integer"
+                    },
+                    {
+                      "property": "adres",
+                      "title": "Adres",
+                      "type": "string"
+                    }
+                  ],
+                  "confirmDelete": true,
+                  "confirmDeleteCancelText": "Anuluj",
+                  "confirmDeleteOkText": "Ok",
+                  "confirmDeleteText": "Na pewno chcesz usunąć ten rekord?",
+                  "confirmDeleteTitle": "Potwierdź",
+                  "containsText": "Contains",
                   "count": "${getUczensCount}",
                   "data": "${getUczensResult}",
+                  "emptyText": "Brak wyników.",
+                  "endsWithText": "Ends with",
+                  "equalsText": "Equals",
                   "events": {
+                    "add": [
+                      {
+                        "path": "add-uczen",
+                        "type": "popup"
+                      }
+                    ],
+                    "delete": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to delete Uczen",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "Baza.deleteUczen",
+                        "parameters": [
+                          {
+                            "name": "uczen_id",
+                            "value": "${event.uczen_id}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "detail": "Uczen deleted!",
+                            "severity": "success",
+                            "summary": "Success",
+                            "type": "notify"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ],
                     "loadData": [
                       {
+                        "error": [
+                          {
+                            "detail": "Unable to load Uczens",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
                         "name": "Baza.getUczens",
                         "parameters": [
                           {
@@ -70,49 +164,7 @@
                             "value": "event.top != null && event.skip != null ? result['@odata.count'] : ${result.value.length}"
                           }
                         ],
-                        "type": "invoke",
-                        "error": [
-                          {
-                            "detail": "Unable to load Uczens",
-                            "severity": "error",
-                            "summary": "Error",
-                            "type": "notify"
-                          }
-                        ]
-                      }
-                    ],
-                    "delete": [
-                      {
-                        "error": [
-                          {
-                            "detail": "Unable to delete Uczen",
-                            "severity": "error",
-                            "summary": "Error",
-                            "type": "notify"
-                          }
-                        ],
-                        "name": "Baza.deleteUczen",
-                        "parameters": [
-                          {
-                            "name": "uczen_id",
-                            "value": "${event.uczen_id}"
-                          }
-                        ],
-                        "then": [
-                          {
-                            "detail": "Uczen deleted!",
-                            "severity": "success",
-                            "summary": "Success",
-                            "type": "notify"
-                          }
-                        ],
                         "type": "invoke"
-                      }
-                    ],
-                    "add": [
-                      {
-                        "path": "add-uczen",
-                        "type": "popup"
                       }
                     ],
                     "rowSelect": [
@@ -128,87 +180,35 @@
                       }
                     ]
                   },
-                  "title": "",
-                  "columns": [
-                    {
-                      "property": "data_urodzenia",
-                      "formatString": "medium",
-                      "title": "Data Urodzenia",
-                      "type": "string",
-                      "format": "date-time"
-                    },
-                    {
-                      "property": "osoba_id",
-                      "sortProperty": "Osoba.imie",
-                      "filterProperty": "Osoba.imie",
-                      "template": "${data.Osoba?.imie}",
-                      "title": "Osoba",
-                      "type": "string"
-                    },
-                    {
-                      "property": "rodzic_id",
-                      "sortProperty": "Rodzic.rodzic_id",
-                      "filterProperty": "Rodzic.rodzic_id",
-                      "template": "${data.Rodzic?.rodzic_id}",
-                      "title": "Rodzic",
-                      "type": "integer"
-                    },
-                    {
-                      "property": "klasa_id",
-                      "sortProperty": "Klasa.nazwa",
-                      "filterProperty": "Klasa.nazwa",
-                      "template": "${data.Klasa?.nazwa}",
-                      "title": "Klasa",
-                      "type": "string"
-                    },
-                    {
-                      "property": "uczen_id",
-                      "title": "Uczen Id",
-                      "type": "integer"
-                    },
-                    {
-                      "property": "adres",
-                      "title": "Adres",
-                      "type": "string"
-                    }
-                  ],
-                  "type": "grid",
-                  "confirmDeleteText": "Are you sure you want to delete this record?",
-                  "confirmDeleteTitle": "Confirmation",
-                  "confirmDeleteOkText": "Ok",
-                  "confirmDeleteCancelText": "Cancel",
-                  "emptyText": "No records to display.",
-                  "addText": "Add",
-                  "clearFilterText": "Clear",
-                  "applyFilterText": "Apply",
-                  "equalsText": "Equals",
-                  "notEqualsText": "Not equals",
-                  "lessThanText": "Less than",
-                  "lessThanOrEqualsText": "Less than or equals",
-                  "greaterThanText": "Greater than",
                   "greaterThanOrEqualsText": "Greater than or equals",
-                  "endsWithText": "Ends with",
-                  "containsText": "Contains",
-                  "startsWithText": "Starts with"
+                  "greaterThanText": "Greater than",
+                  "lessThanOrEqualsText": "Less than or equals",
+                  "lessThanText": "Less than",
+                  "name": "grid0",
+                  "notEqualsText": "Not equals",
+                  "startsWithText": "Starts with",
+                  "title": "",
+                  "type": "grid"
                 }
-              ]
+              ],
+              "type": "col"
             }
-          ]
+          ],
+          "type": "row"
         }
-      ]
+      ],
+      "container": "main",
+      "type": "content"
     }
   ],
   "events": {
     "load": [
       {
-        "type": "execute",
-        "code": "this.grid0.load();"
+        "code": "this.grid0.load();",
+        "type": "execute"
       }
     ]
   },
-  "name": "Uczen",
-  "access": [
-    "Admin"
-  ],
-  "layout": "Main"
+  "layout": "Main",
+  "name": "Uczen"
 }

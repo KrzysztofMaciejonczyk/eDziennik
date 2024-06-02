@@ -1,133 +1,130 @@
 {
+  "access": [
+    "Authenticated"
+  ],
   "components": [
     {
-      "type": "content",
-      "container": "main",
       "components": [
         {
-          "type": "row",
           "components": [
             {
-              "type": "col",
               "class": "col-md-12",
               "components": [
                 {
-                  "type": "template-form",
-                  "name": "form0",
                   "components": [
                     {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
                       "components": [
                         {
-                          "type": "col",
                           "class": "col-md-3",
                           "components": [
                             {
-                              "type": "label",
-                              "text": "Nauczyciel",
                               "component": "nauczyciel_id",
                               "name": "nauczyciel_idLabel",
                               "style": {
                                 "width": "100%"
-                              }
+                              },
+                              "text": "Nauczyciel",
+                              "type": "label"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         },
                         {
-                          "type": "col",
                           "class": "col-md-9",
                           "components": [
                             {
                               "data": "${getNauczycielsResult}",
-                              "textProperty": "nauczyciel_id",
-                              "valueProperty": "nauczyciel_id",
-                              "placeholder": "Choose Nauczyciel",
-                              "type": "dropdown",
+                              "emptyFilterText": "Brak wyników",
+                              "multipleItemsSelectedText": "{0} wybranych",
                               "name": "nauczyciel_id",
+                              "placeholder": "Wybierz nauczyciela",
                               "style": {
                                 "width": "100%"
                               },
+                              "textProperty": "nauczyciel_id",
+                              "type": "dropdown",
                               "value": "${klasa.nauczyciel_id}",
-                              "multipleItemsSelectedText": "{0} items selected",
-                              "emptyFilterText": "No results found"
+                              "valueProperty": "nauczyciel_id"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
-                    },
-                    {
-                      "type": "row",
+                      ],
                       "style": {
                         "marginBottom": "1rem"
                       },
+                      "type": "row"
+                    },
+                    {
                       "components": [
                         {
-                          "type": "col",
                           "class": "col-md-3",
                           "components": [
                             {
-                              "type": "label",
-                              "text": "Nazwa",
                               "component": "nazwa",
                               "name": "nazwaLabel",
                               "style": {
                                 "width": "100%"
-                              }
+                              },
+                              "text": "Nazwa",
+                              "type": "label"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         },
                         {
-                          "type": "col",
                           "class": "col-md-9",
                           "components": [
                             {
                               "maxLength": 2,
-                              "type": "textbox",
                               "name": "nazwa",
                               "style": {
                                 "width": "100%"
                               },
+                              "type": "textbox",
                               "value": "${klasa.nazwa}"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
                     },
                     {
-                      "type": "row",
                       "components": [
                         {
-                          "type": "col",
                           "class": "col offset-sm-3",
                           "components": [
                             {
-                              "type": "button",
+                              "buttonStyle": "primary",
                               "buttonType": "submit",
                               "icon": "save",
-                              "text": "Save",
-                              "buttonStyle": "primary"
+                              "text": "Zapisz",
+                              "type": "button"
                             },
                             {
-                              "type": "button",
                               "buttonStyle": "light",
-                              "style": {
-                                "marginLeft": "1rem"
-                              },
-                              "text": "Cancel",
                               "events": {
                                 "click": [
                                   {
                                     "type": "back"
                                   }
                                 ]
-                              }
+                              },
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Anuluj",
+                              "type": "button"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
+                      ],
+                      "type": "row"
                     }
                   ],
                   "events": {
@@ -164,18 +161,25 @@
                         "type": "invoke"
                       }
                     ]
-                  }
+                  },
+                  "name": "form0",
+                  "type": "template-form"
                 }
-              ]
+              ],
+              "type": "col"
             }
-          ]
+          ],
+          "type": "row"
         }
-      ]
+      ],
+      "container": "main",
+      "type": "content"
     }
   ],
   "events": {
     "load": [
       {
+        "error": [],
         "name": "Baza.getKlasaByklasa_id",
         "parameters": [
           {
@@ -190,7 +194,6 @@
             "value": "${result}"
           }
         ],
-        "error": [],
         "type": "invoke"
       },
       {
@@ -207,9 +210,6 @@
       }
     ]
   },
-  "name": "Edit Klasa",
   "layout": "Main",
-  "access": [
-    "Authenticated"
-  ]
+  "name": "Edit Klasa"
 }

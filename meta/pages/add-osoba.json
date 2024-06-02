@@ -24,7 +24,7 @@
                               "style": {
                                 "width": "100%"
                               },
-                              "text": "Imie",
+                              "text": "Imię",
                               "type": "label"
                             }
                           ],
@@ -172,7 +172,7 @@
                               "style": {
                                 "width": "100%"
                               },
-                              "text": "Haslo",
+                              "text": "Hasło",
                               "type": "label"
                             }
                           ],
@@ -207,7 +207,8 @@
                               "buttonStyle": "primary",
                               "buttonType": "submit",
                               "icon": "save",
-                              "text": "Save",
+                              "text": "Zapisz",
+                              "tooltip": "",
                               "type": "button"
                             },
                             {
@@ -215,7 +216,7 @@
                               "style": {
                                 "marginLeft": "1rem"
                               },
-                              "text": "Cancel",
+                              "text": "Anuluj",
                               "type": "button"
                             }
                           ],

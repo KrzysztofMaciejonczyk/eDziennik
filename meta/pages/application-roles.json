@@ -4,51 +4,48 @@
   ],
   "components": [
     {
-      "type": "content",
-      "container": "main",
       "components": [
         {
-          "type": "heading",
           "name": "pageTitle",
           "size": "H1",
-          "text": "Application Roles"
+          "text": "Role",
+          "type": "heading"
         },
         {
-          "type": "row",
           "components": [
             {
-              "type": "col",
               "class": "col-md-12",
               "components": [
                 {
-                  "allowDelete": true,
+                  "addText": "Dodaj rolę",
                   "allowAdd": true,
+                  "allowDelete": true,
+                  "applyFilterText": "Apply",
+                  "clearFilterText": "Clear",
                   "columns": [
                     {
                       "property": "Name",
-                      "title": "Name"
+                      "title": "Nazwa"
                     }
                   ],
+                  "confirmDeleteCancelText": "Anuluj",
+                  "confirmDeleteOkText": "Ok",
+                  "confirmDeleteText": "Na pewno chcesz usunąć ten rekord?",
+                  "confirmDeleteTitle": "Potwierdź",
+                  "containsText": "Contains",
                   "data": "${getRolesResult}",
+                  "emptyText": "Brak rekordów.",
+                  "endsWithText": "Ends with",
+                  "equalsText": "Equals",
                   "events": {
+                    "add": [
+                      {
+                        "path": "add-application-role",
+                        "type": "popup"
+                      }
+                    ],
                     "delete": [
                       {
-                        "name": "Security.deleteRole",
-                        "parameters": [
-                          {
-                            "name": "id",
-                            "value": "${event.Id}"
-                          }
-                        ],
-                        "type": "invoke",
-                        "then": [
-                          {
-                            "type": "notify",
-                            "severity": "info",
-                            "summary": "Success",
-                            "detail": "Role \"${event.Name}\" has been deleted."
-                          }
-                        ],
                         "error": [
                           {
                             "detail": "${result.error.message}",
@@ -56,41 +53,44 @@
                             "summary": "Cannot delete role",
                             "type": "notify"
                           }
-                        ]
-                      }
-                    ],
-                    "add": [
-                      {
-                        "type": "popup",
-                        "path": "add-application-role"
+                        ],
+                        "name": "Security.deleteRole",
+                        "parameters": [
+                          {
+                            "name": "id",
+                            "value": "${event.Id}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "detail": "Role \"${event.Name}\" has been deleted.",
+                            "severity": "info",
+                            "summary": "Success",
+                            "type": "notify"
+                          }
+                        ],
+                        "type": "invoke"
                       }
                     ]
                   },
-                  "name": "grid0",
-                  "type": "grid",
-                  "confirmDeleteText": "Are you sure you want to delete this record?",
-                  "confirmDeleteTitle": "Confirmation",
-                  "confirmDeleteOkText": "Ok",
-                  "confirmDeleteCancelText": "Cancel",
-                  "emptyText": "No records to display.",
-                  "addText": "Add",
-                  "clearFilterText": "Clear",
-                  "applyFilterText": "Apply",
-                  "equalsText": "Equals",
-                  "notEqualsText": "Not equals",
-                  "lessThanText": "Less than",
-                  "lessThanOrEqualsText": "Less than or equals",
-                  "greaterThanText": "Greater than",
                   "greaterThanOrEqualsText": "Greater than or equals",
-                  "endsWithText": "Ends with",
-                  "containsText": "Contains",
-                  "startsWithText": "Starts with"
+                  "greaterThanText": "Greater than",
+                  "lessThanOrEqualsText": "Less than or equals",
+                  "lessThanText": "Less than",
+                  "name": "grid0",
+                  "notEqualsText": "Not equals",
+                  "startsWithText": "Starts with",
+                  "type": "grid"
                 }
-              ]
+              ],
+              "type": "col"
             }
-          ]
+          ],
+          "type": "row"
         }
-      ]
+      ],
+      "container": "main",
+      "type": "content"
     }
   ],
   "events": {
@@ -108,6 +108,6 @@
       }
     ]
   },
-  "name": "Application Roles",
-  "layout": "Main"
+  "layout": "Main",
+  "name": "Application Roles"
 }

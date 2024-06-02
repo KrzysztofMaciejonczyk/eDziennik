@@ -17,7 +17,7 @@
               "class": "col-md-12",
               "components": [
                 {
-                  "addText": "Add",
+                  "addText": "Dodaj klasę",
                   "allowAdd": true,
                   "allowDelete": true,
                   "allowFiltering": true,
@@ -32,12 +32,12 @@
                       "property": "nauczyciel_id",
                       "sortProperty": "Nauczyciel.nauczyciel_id",
                       "template": "${data.Nauczyciel?.nauczyciel_id}",
-                      "title": "Nauczyciel",
+                      "title": "Nauczyciel_ID",
                       "type": "integer"
                     },
                     {
                       "property": "klasa_id",
-                      "title": "Klasa Id",
+                      "title": "Klasa_ID",
                       "type": "integer"
                     },
                     {
@@ -47,14 +47,14 @@
                     }
                   ],
                   "confirmDelete": true,
-                  "confirmDeleteCancelText": "Cancel",
+                  "confirmDeleteCancelText": "Anuluj",
                   "confirmDeleteOkText": "Ok",
-                  "confirmDeleteText": "Are you sure you want to delete this record?",
-                  "confirmDeleteTitle": "Confirmation",
+                  "confirmDeleteText": "Na pewno chcesz usunąć ten rekord?",
+                  "confirmDeleteTitle": "Potwierdź",
                   "containsText": "Contains",
                   "count": "${getKlasasCount}",
                   "data": "${getKlasasResult}",
-                  "emptyText": "No records to display.",
+                  "emptyText": "Brak wyników.",
                   "endsWithText": "Ends with",
                   "equalsText": "Equals",
                   "events": {

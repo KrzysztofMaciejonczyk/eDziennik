@@ -36,7 +36,7 @@
                             {
                               "count": "${getOsobasForosoba_idCount}",
                               "data": "${getOsobasForosoba_idResult}",
-                              "emptyText": "No records to display.",
+                              "emptyText": "Brak wyników do wyświetlenia.",
                               "events": {
                                 "loadData": [
                                   {
@@ -81,8 +81,8 @@
                               },
                               "name": "osoba_id",
                               "pageSize": "${getOsobasForosoba_idPageSize}",
-                              "placeholder": "Choose Osoba",
-                              "searchText": "Search...",
+                              "placeholder": "Wybierz osobę",
+                              "searchText": "Szukaj...",
                               "style": {
                                 "width": "100%"
                               },
@@ -108,7 +108,7 @@
                               "buttonStyle": "primary",
                               "buttonType": "submit",
                               "icon": "save",
-                              "text": "Save",
+                              "text": "Zapisz",
                               "type": "button"
                             },
                             {
@@ -123,7 +123,7 @@
                               "style": {
                                 "marginLeft": "1rem"
                               },
-                              "text": "Cancel",
+                              "text": "Anuluj",
                               "type": "button"
                             }
                           ],

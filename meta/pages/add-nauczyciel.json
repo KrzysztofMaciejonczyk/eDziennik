@@ -34,16 +34,16 @@
                           "components": [
                             {
                               "data": "${getOsobasResult}",
-                              "emptyFilterText": "No results found",
-                              "multipleItemsSelectedText": "{0} items selected",
+                              "emptyFilterText": "Brak wyników",
+                              "multipleItemsSelectedText": "{0} wybranych",
                               "name": "osoba_id",
-                              "placeholder": "Choose Osoba",
+                              "placeholder": "Wybierz osobę",
                               "style": {
                                 "width": "100%"
                               },
-                              "textProperty": "osoba_id",
+                              "textProperty": "nazwisko",
                               "type": "dropdown",
-                              "valueProperty": "osoba_id"
+                              "valueProperty": "nazwisko"
                             }
                           ],
                           "type": "col"
@@ -63,7 +63,8 @@
                               "buttonStyle": "primary",
                               "buttonType": "submit",
                               "icon": "save",
-                              "text": "Save",
+                              "text": "Zapisz",
+                              "tooltip": "",
                               "type": "button"
                             },
                             {
@@ -78,7 +79,7 @@
                               "style": {
                                 "marginLeft": "1rem"
                               },
-                              "text": "Cancel",
+                              "text": "Anuluj",
                               "type": "button"
                             }
                           ],

@@ -4,17 +4,17 @@
       <rz-template-form #form0 (submit)="form0Submit($event)">
         <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
           <div class="col-md-3">
-            <rz-label #nauczycielIdLabel text="Nauczyciel" component="nauczyciel_id" [style]="{'width': '100%'}">
+            <rz-label #nauczycielIdLabel component="nauczyciel_id" [style]="{'width': '100%'}" text="Nauczyciel">
             </rz-label>
           </div>
           <div class="col-md-9">
-            <rz-dropdown #nauczycielId [data]="getNauczycielsResult" textProperty="nauczyciel_id" valueProperty="nauczyciel_id" placeholder="Choose Nauczyciel" [style]="{'width': '100%'}" multipleItemsSelectedText="{0} items selected" emptyFilterText="No results found" name="nauczyciel_id">
+            <rz-dropdown #nauczycielId [data]="getNauczycielsResult" emptyFilterText="Brak wyników" multipleItemsSelectedText="{0} wybranych" placeholder="Wybierz nauczyciela" [style]="{'width': '100%'}" textProperty="nauczyciel_id" valueProperty="nauczyciel_id" name="nauczyciel_id">
             </rz-dropdown>
           </div>
         </div>
         <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
           <div class="col-md-3">
-            <rz-label #nazwaLabel text="Nazwa" component="nazwa" [style]="{'width': '100%'}">
+            <rz-label #nazwaLabel component="nazwa" [style]="{'width': '100%'}" text="Nazwa">
             </rz-label>
           </div>
           <div class="col-md-9">
@@ -24,9 +24,9 @@
         </div>
         <div class="row">
           <div class="col offset-sm-3">
-            <rz-button #button1 buttonType="submit" icon="save" text="Save" buttonStyle="primary">
+            <rz-button #button1 buttonStyle="primary" buttonType="submit" icon="save" text="Zapisz">
             </rz-button>
-            <rz-button #button2 buttonStyle="light" [style]="{'marginLeft': '1rem'}" text="Cancel" (click)="button2Click($event)">
+            <rz-button #button2 buttonStyle="light" [style]="{'marginLeft': '1rem'}" text="Anuluj" (click)="button2Click($event)">
             </rz-button>
           </div>
         </div>

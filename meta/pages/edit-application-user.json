@@ -2,92 +2,18 @@
   "access": [
     "Authenticated"
   ],
-  "events": {
-    "load": [
-      {
-        "type": "invoke",
-        "name": "Security.getUserById",
-        "parameters": [
-          {
-            "name": "Id",
-            "value": "${parameters.Id}"
-          }
-        ],
-        "then": [
-          {
-            "type": "set",
-            "name": "user",
-            "value": "${result}"
-          }
-        ]
-      },
-      {
-        "type": "invoke",
-        "name": "Security.getRoles",
-        "then": [
-          {
-            "type": "set",
-            "name": "roles",
-            "value": "${result.value}"
-          }
-        ]
-      }
-    ]
-  },
   "components": [
     {
-      "type": "content",
-      "container": "main",
       "components": [
         {
-          "type": "row",
           "components": [
             {
-              "type": "col",
               "class": "col-md-12",
               "components": [
                 {
+                  "cancelText": "Anuluj",
                   "data": "${user}",
-                  "fields": [
-                    {
-                      "property": "UserName",
-                      "type": "string",
-                      "disabled": true,
-                      "title": "User Name",
-                      "requiredText": "is required"
-                    },
-                    {
-                      "property": "Email",
-                      "type": "string",
-                      "title": "Email",
-                      "requiredText": "is required"
-                    },
-                    {
-                      "title": "Roles",
-                      "property": "RoleNames",
-                      "type": "lookup",
-                      "data": "${roles}",
-                      "multiple": true,
-                      "textProperty": "Name",
-                      "valueProperty": "Name",
-                      "requiredText": "is required",
-                      "multipleItemsSelectedText": "{0} items selected",
-                      "emptyFilterText": "No results found"
-                    },
-                    {
-                      "type": "password",
-                      "property": "Password",
-                      "title": "Password",
-                      "requiredText": "is required"
-                    },
-                    {
-                      "type": "password",
-                      "property": "ConfirmPassword",
-                      "compare": "Password",
-                      "title": "Confirm password",
-                      "requiredText": "is required"
-                    }
-                  ],
+                  "deleteText": "Usuń",
                   "events": {
                     "cancel": [
                       {
@@ -104,11 +30,6 @@
                             "type": "notify"
                           }
                         ],
-                        "then": [
-                          {
-                            "type": "back"
-                          }
-                        ],
                         "name": "Security.updateUser",
                         "parameters": [
                           {
@@ -120,21 +41,102 @@
                             "value": "${event}"
                           }
                         ],
+                        "then": [
+                          {
+                            "type": "back"
+                          }
+                        ],
                         "type": "invoke"
                       }
                     ]
                   },
-                  "submitText": "Save",
+                  "fields": [
+                    {
+                      "disabled": true,
+                      "property": "UserName",
+                      "requiredText": "is required",
+                      "title": "Login",
+                      "type": "string"
+                    },
+                    {
+                      "property": "Email",
+                      "requiredText": "is required",
+                      "title": "Email",
+                      "type": "string"
+                    },
+                    {
+                      "data": "${roles}",
+                      "emptyFilterText": "No results found",
+                      "multiple": true,
+                      "multipleItemsSelectedText": "{0} items selected",
+                      "property": "RoleNames",
+                      "requiredText": "is required",
+                      "textProperty": "Name",
+                      "title": "Rola",
+                      "type": "lookup",
+                      "valueProperty": "Name"
+                    },
+                    {
+                      "property": "Password",
+                      "requiredText": "is required",
+                      "title": "Hasło",
+                      "type": "password"
+                    },
+                    {
+                      "compare": "Password",
+                      "property": "ConfirmPassword",
+                      "requiredText": "is required",
+                      "title": "Potwierdź hasło",
+                      "type": "password"
+                    }
+                  ],
                   "name": "form0",
+                  "submitText": "Zapisz",
                   "type": "form"
                 }
-              ]
+              ],
+              "type": "col"
             }
-          ]
+          ],
+          "type": "row"
         }
-      ]
+      ],
+      "container": "main",
+      "type": "content"
     }
   ],
-  "name": "Edit Application User",
-  "layout": "Main"
+  "events": {
+    "load": [
+      {
+        "name": "Security.getUserById",
+        "parameters": [
+          {
+            "name": "Id",
+            "value": "${parameters.Id}"
+          }
+        ],
+        "then": [
+          {
+            "name": "user",
+            "type": "set",
+            "value": "${result}"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "Security.getRoles",
+        "then": [
+          {
+            "name": "roles",
+            "type": "set",
+            "value": "${result.value}"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "layout": "Main",
+  "name": "Edit Application User"
 }

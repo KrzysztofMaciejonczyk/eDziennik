@@ -17,7 +17,7 @@
               "class": "col-md-12",
               "components": [
                 {
-                  "addText": "Add",
+                  "addText": "Dodaj osobę",
                   "allowAdd": true,
                   "allowDelete": true,
                   "allowFiltering": true,
@@ -29,7 +29,7 @@
                   "columns": [
                     {
                       "property": "osoba_id",
-                      "title": "Osoba Id",
+                      "title": "Osoba_ID",
                       "type": "integer"
                     },
                     {
@@ -51,25 +51,25 @@
                     {
                       "format": "",
                       "property": "haslo",
-                      "title": "Haslo",
+                      "title": "Hasło",
                       "type": "string",
                       "visible": true
                     },
                     {
                       "property": "imie",
-                      "title": "Imie",
+                      "title": "Imię",
                       "type": "string"
                     }
                   ],
                   "confirmDelete": true,
-                  "confirmDeleteCancelText": "Cancel",
+                  "confirmDeleteCancelText": "Anuluj",
                   "confirmDeleteOkText": "Ok",
-                  "confirmDeleteText": "Are you sure you want to delete this record?",
-                  "confirmDeleteTitle": "Confirmation",
+                  "confirmDeleteText": "Na pewno chcesz usunąć ten rekord?",
+                  "confirmDeleteTitle": "Potwierdź",
                   "containsText": "Contains",
                   "count": "${getOsobasCount}",
                   "data": "${getOsobasResult}",
-                  "emptyText": "No records to display.",
+                  "emptyText": "Brak wyników.",
                   "endsWithText": "Ends with",
                   "equalsText": "Equals",
                   "events": {

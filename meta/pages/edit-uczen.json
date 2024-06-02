@@ -1,96 +1,78 @@
 {
+  "access": [
+    "Admin"
+  ],
   "components": [
     {
-      "type": "content",
-      "container": "main",
       "components": [
         {
-          "type": "row",
           "components": [
             {
-              "type": "col",
               "class": "col-md-12",
               "components": [
                 {
-                  "type": "template-form",
-                  "name": "form0",
                   "components": [
                     {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
                       "components": [
                         {
-                          "type": "col",
                           "class": "col-md-3",
                           "components": [
                             {
-                              "type": "label",
-                              "text": "Data Urodzenia",
                               "component": "data_urodzenia",
                               "name": "data_urodzeniaLabel",
                               "style": {
                                 "width": "100%"
-                              }
+                              },
+                              "text": "Data urodzenia",
+                              "type": "label"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         },
                         {
-                          "type": "col",
                           "class": "col-md-9",
                           "components": [
                             {
-                              "type": "datepicker",
                               "name": "data_urodzenia",
                               "style": {
                                 "width": "100%"
                               },
+                              "type": "datepicker",
                               "value": "${uczen.data_urodzenia}"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
-                    },
-                    {
-                      "type": "row",
+                      ],
                       "style": {
                         "marginBottom": "1rem"
                       },
+                      "type": "row"
+                    },
+                    {
                       "components": [
                         {
-                          "type": "col",
                           "class": "col-md-3",
                           "components": [
                             {
-                              "type": "label",
-                              "text": "Osoba",
                               "component": "osoba_id",
                               "name": "osoba_idLabel",
                               "style": {
                                 "width": "100%"
-                              }
+                              },
+                              "text": "Osoba",
+                              "type": "label"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         },
                         {
-                          "type": "col",
                           "class": "col-md-9",
                           "components": [
                             {
-                              "data": "${getOsobasForosoba_idResult}",
-                              "textProperty": "imie",
-                              "valueProperty": "osoba_id",
-                              "placeholder": "Choose Osoba",
                               "count": "${getOsobasForosoba_idCount}",
-                              "pageSize": "${getOsobasForosoba_idPageSize}",
-                              "value": "${uczen.osoba_id}",
-                              "type": "dropdown-datagrid",
-                              "name": "osoba_id",
-                              "style": {
-                                "width": "100%"
-                              },
-                              "selectedValue": "${getByOsobasForosoba_idResult}",
+                              "data": "${getOsobasForosoba_idResult}",
+                              "emptyText": "Brak wyników.",
                               "events": {
                                 "loadData": [
                                   {
@@ -132,51 +114,53 @@
                                     "type": "invoke"
                                   }
                                 ]
-                              }
+                              },
+                              "name": "osoba_id",
+                              "pageSize": "${getOsobasForosoba_idPageSize}",
+                              "placeholder": "Wybierz osobę",
+                              "searchText": "Szukaj...",
+                              "selectedValue": "${getByOsobasForosoba_idResult}",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "textProperty": "imie",
+                              "type": "dropdown-datagrid",
+                              "value": "${uczen.osoba_id}",
+                              "valueProperty": "osoba_id"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
-                    },
-                    {
-                      "type": "row",
+                      ],
                       "style": {
                         "marginBottom": "1rem"
                       },
+                      "type": "row"
+                    },
+                    {
                       "components": [
                         {
-                          "type": "col",
                           "class": "col-md-3",
                           "components": [
                             {
-                              "type": "label",
-                              "text": "Rodzic",
                               "component": "rodzic_id",
                               "name": "rodzic_idLabel",
                               "style": {
                                 "width": "100%"
-                              }
+                              },
+                              "text": "Rodzic",
+                              "type": "label"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         },
                         {
-                          "type": "col",
                           "class": "col-md-9",
                           "components": [
                             {
-                              "data": "${getRodzicsForrodzic_idResult}",
-                              "textProperty": "rodzic_id",
-                              "valueProperty": "rodzic_id",
-                              "placeholder": "Choose Rodzic",
                               "count": "${getRodzicsForrodzic_idCount}",
-                              "pageSize": "${getRodzicsForrodzic_idPageSize}",
-                              "value": "${uczen.rodzic_id}",
-                              "type": "dropdown-datagrid",
-                              "name": "rodzic_id",
-                              "style": {
-                                "width": "100%"
-                              },
-                              "selectedValue": "${getByRodzicsForrodzic_idResult}",
+                              "data": "${getRodzicsForrodzic_idResult}",
+                              "emptyText": "Brak wyników.",
                               "events": {
                                 "loadData": [
                                   {
@@ -218,51 +202,53 @@
                                     "type": "invoke"
                                   }
                                 ]
-                              }
+                              },
+                              "name": "rodzic_id",
+                              "pageSize": "${getRodzicsForrodzic_idPageSize}",
+                              "placeholder": "Wybierz rodzica",
+                              "searchText": "Szukaj...",
+                              "selectedValue": "${getByRodzicsForrodzic_idResult}",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "textProperty": "rodzic_id",
+                              "type": "dropdown-datagrid",
+                              "value": "${uczen.rodzic_id}",
+                              "valueProperty": "rodzic_id"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
-                    },
-                    {
-                      "type": "row",
+                      ],
                       "style": {
                         "marginBottom": "1rem"
                       },
+                      "type": "row"
+                    },
+                    {
                       "components": [
                         {
-                          "type": "col",
                           "class": "col-md-3",
                           "components": [
                             {
-                              "type": "label",
-                              "text": "Klasa",
                               "component": "klasa_id",
                               "name": "klasa_idLabel",
                               "style": {
                                 "width": "100%"
-                              }
+                              },
+                              "text": "Klasa",
+                              "type": "label"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         },
                         {
-                          "type": "col",
                           "class": "col-md-9",
                           "components": [
                             {
-                              "data": "${getKlasasForklasa_idResult}",
-                              "textProperty": "nazwa",
-                              "valueProperty": "klasa_id",
-                              "placeholder": "Choose Klasa",
                               "count": "${getKlasasForklasa_idCount}",
-                              "pageSize": "${getKlasasForklasa_idPageSize}",
-                              "value": "${uczen.klasa_id}",
-                              "type": "dropdown-datagrid",
-                              "name": "klasa_id",
-                              "style": {
-                                "width": "100%"
-                              },
-                              "selectedValue": "${getByKlasasForklasa_idResult}",
+                              "data": "${getKlasasForklasa_idResult}",
+                              "emptyText": "Brak wyników.",
                               "events": {
                                 "loadData": [
                                   {
@@ -304,82 +290,99 @@
                                     "type": "invoke"
                                   }
                                 ]
-                              }
+                              },
+                              "name": "klasa_id",
+                              "pageSize": "${getKlasasForklasa_idPageSize}",
+                              "placeholder": "Wybierz klasę",
+                              "searchText": "Szukaj...",
+                              "selectedValue": "${getByKlasasForklasa_idResult}",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "textProperty": "nazwa",
+                              "type": "dropdown-datagrid",
+                              "value": "${uczen.klasa_id}",
+                              "valueProperty": "klasa_id"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
-                    },
-                    {
-                      "type": "row",
+                      ],
                       "style": {
                         "marginBottom": "1rem"
                       },
+                      "type": "row"
+                    },
+                    {
                       "components": [
                         {
-                          "type": "col",
                           "class": "col-md-3",
                           "components": [
                             {
-                              "type": "label",
-                              "text": "Adres",
                               "component": "adres",
                               "name": "adresLabel",
                               "style": {
                                 "width": "100%"
-                              }
+                              },
+                              "text": "Adres",
+                              "type": "label"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         },
                         {
-                          "type": "col",
                           "class": "col-md-9",
                           "components": [
                             {
                               "maxLength": 100,
-                              "type": "textbox",
                               "name": "adres",
                               "style": {
                                 "width": "100%"
                               },
+                              "type": "textbox",
                               "value": "${uczen.adres}"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
                     },
                     {
-                      "type": "row",
                       "components": [
                         {
-                          "type": "col",
                           "class": "col offset-sm-3",
                           "components": [
                             {
-                              "type": "button",
+                              "buttonStyle": "primary",
                               "buttonType": "submit",
                               "icon": "save",
-                              "text": "Save",
-                              "buttonStyle": "primary"
+                              "text": "Zapisz",
+                              "type": "button"
                             },
                             {
-                              "type": "button",
                               "buttonStyle": "light",
-                              "style": {
-                                "marginLeft": "1rem"
-                              },
-                              "text": "Cancel",
                               "events": {
                                 "click": [
                                   {
                                     "type": "back"
                                   }
                                 ]
-                              }
+                              },
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Anuluj",
+                              "type": "button"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
+                      ],
+                      "type": "row"
                     }
                   ],
                   "events": {
@@ -416,18 +419,25 @@
                         "type": "invoke"
                       }
                     ]
-                  }
+                  },
+                  "name": "form0",
+                  "type": "template-form"
                 }
-              ]
+              ],
+              "type": "col"
             }
-          ]
+          ],
+          "type": "row"
         }
-      ]
+      ],
+      "container": "main",
+      "type": "content"
     }
   ],
   "events": {
     "load": [
       {
+        "error": [],
         "name": "Baza.getUczenByuczen_id",
         "parameters": [
           {
@@ -442,6 +452,7 @@
             "value": "${result}"
           },
           {
+            "condition": "this.uczen.osoba_id != null",
             "name": "Baza.getOsobaByosoba_id",
             "parameters": [
               {
@@ -456,10 +467,10 @@
                 "value": "${result}"
               }
             ],
-            "condition": "this.uczen.osoba_id != null",
             "type": "invoke"
           },
           {
+            "condition": "this.uczen.rodzic_id != null",
             "name": "Baza.getRodzicByrodzic_id",
             "parameters": [
               {
@@ -474,10 +485,10 @@
                 "value": "${result}"
               }
             ],
-            "condition": "this.uczen.rodzic_id != null",
             "type": "invoke"
           },
           {
+            "condition": "this.uczen.klasa_id != null",
             "name": "Baza.getKlasaByklasa_id",
             "parameters": [
               {
@@ -492,11 +503,9 @@
                 "value": "${result}"
               }
             ],
-            "condition": "this.uczen.klasa_id != null",
             "type": "invoke"
           }
         ],
-        "error": [],
         "type": "invoke"
       },
       {
@@ -606,9 +615,6 @@
       }
     ]
   },
-  "name": "Edit Uczen",
-  "access": [
-    "Admin"
-  ],
-  "layout": "Main"
+  "layout": "Main",
+  "name": "Edit Uczen"
 }

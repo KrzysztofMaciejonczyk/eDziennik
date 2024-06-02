@@ -92,6 +92,14 @@ export class RegisterApplicationUserGenerated implements AfterViewInit, OnInit, 
   }
 
 
+  form0Cancel(event: any) {
+    if (this.dialogRef) {
+      this.dialogRef.close();
+    } else {
+      this._location.back();
+    }
+  }
+
   form0Submit(event: any) {
     this.security.registerUser(event)
     .subscribe((result: any) => {
@@ -103,13 +111,5 @@ export class RegisterApplicationUserGenerated implements AfterViewInit, OnInit, 
     }, (result: any) => {
       this.notificationService.notify({ severity: "error", summary: `Cannot register user`, detail: `${result.error.message}` });
     });
-  }
-
-  form0Cancel(event: any) {
-    if (this.dialogRef) {
-      this.dialogRef.close();
-    } else {
-      this._location.back();
-    }
   }
 }

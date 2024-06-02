@@ -1,93 +1,83 @@
 {
+  "access": [
+    "Admin"
+  ],
   "components": [
     {
-      "type": "content",
-      "container": "main",
       "components": [
         {
-          "type": "row",
           "components": [
             {
-              "type": "col",
               "class": "col-md-12",
               "components": [
                 {
-                  "type": "template-form",
-                  "name": "form0",
                   "components": [
                     {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
                       "components": [
                         {
-                          "type": "col",
                           "class": "col-md-3",
                           "components": [
                             {
-                              "type": "label",
-                              "text": "Data Urodzenia",
                               "component": "data_urodzenia",
                               "name": "data_urodzeniaLabel",
                               "style": {
                                 "width": "100%"
-                              }
+                              },
+                              "text": "Data urodzenia",
+                              "type": "label"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         },
                         {
-                          "type": "col",
                           "class": "col-md-9",
                           "components": [
                             {
-                              "type": "datepicker",
+                              "attributes": [],
+                              "dateFormat": "mm/dd/yy",
                               "name": "data_urodzenia",
+                              "placeholder": "",
+                              "showSeconds": false,
                               "style": {
                                 "width": "100%"
-                              }
+                              },
+                              "type": "datepicker",
+                              "utc": false,
+                              "value": ""
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
-                    },
-                    {
-                      "type": "row",
+                      ],
                       "style": {
                         "marginBottom": "1rem"
                       },
+                      "type": "row"
+                    },
+                    {
                       "components": [
                         {
-                          "type": "col",
                           "class": "col-md-3",
                           "components": [
                             {
-                              "type": "label",
-                              "text": "Osoba",
                               "component": "osoba_id",
                               "name": "osoba_idLabel",
                               "style": {
                                 "width": "100%"
-                              }
+                              },
+                              "text": "Osoba",
+                              "type": "label"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         },
                         {
-                          "type": "col",
                           "class": "col-md-9",
                           "components": [
                             {
-                              "data": "${getOsobasForosoba_idResult}",
-                              "textProperty": "imie",
-                              "valueProperty": "osoba_id",
-                              "placeholder": "Choose Osoba",
                               "count": "${getOsobasForosoba_idCount}",
-                              "pageSize": "${getOsobasForosoba_idPageSize}",
-                              "type": "dropdown-datagrid",
-                              "name": "osoba_id",
-                              "style": {
-                                "width": "100%"
-                              },
+                              "data": "${getOsobasForosoba_idResult}",
+                              "emptyText": "Brak wyników do wyświetlenia.",
                               "events": {
                                 "loadData": [
                                   {
@@ -129,49 +119,51 @@
                                     "type": "invoke"
                                   }
                                 ]
-                              }
+                              },
+                              "name": "osoba_id",
+                              "pageSize": "${getOsobasForosoba_idPageSize}",
+                              "placeholder": "Wybierz osobę",
+                              "searchText": "Szukaj...",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "textProperty": "imie",
+                              "type": "dropdown-datagrid",
+                              "valueProperty": "osoba_id"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
-                    },
-                    {
-                      "type": "row",
+                      ],
                       "style": {
                         "marginBottom": "1rem"
                       },
+                      "type": "row"
+                    },
+                    {
                       "components": [
                         {
-                          "type": "col",
                           "class": "col-md-3",
                           "components": [
                             {
-                              "type": "label",
-                              "text": "Rodzic",
                               "component": "rodzic_id",
                               "name": "rodzic_idLabel",
                               "style": {
                                 "width": "100%"
-                              }
+                              },
+                              "text": "Rodzic",
+                              "type": "label"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         },
                         {
-                          "type": "col",
                           "class": "col-md-9",
                           "components": [
                             {
-                              "data": "${getRodzicsForrodzic_idResult}",
-                              "textProperty": "rodzic_id",
-                              "valueProperty": "rodzic_id",
-                              "placeholder": "Choose Rodzic",
                               "count": "${getRodzicsForrodzic_idCount}",
-                              "pageSize": "${getRodzicsForrodzic_idPageSize}",
-                              "type": "dropdown-datagrid",
-                              "name": "rodzic_id",
-                              "style": {
-                                "width": "100%"
-                              },
+                              "data": "${getRodzicsForrodzic_idResult}",
+                              "emptyText": "Brak wyników do wyświetlenia.",
                               "events": {
                                 "loadData": [
                                   {
@@ -213,49 +205,51 @@
                                     "type": "invoke"
                                   }
                                 ]
-                              }
+                              },
+                              "name": "rodzic_id",
+                              "pageSize": "${getRodzicsForrodzic_idPageSize}",
+                              "placeholder": "Wybierz rodzica",
+                              "searchText": "Szukaj...",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "textProperty": "rodzic_id",
+                              "type": "dropdown-datagrid",
+                              "valueProperty": "rodzic_id"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
-                    },
-                    {
-                      "type": "row",
+                      ],
                       "style": {
                         "marginBottom": "1rem"
                       },
+                      "type": "row"
+                    },
+                    {
                       "components": [
                         {
-                          "type": "col",
                           "class": "col-md-3",
                           "components": [
                             {
-                              "type": "label",
-                              "text": "Klasa",
                               "component": "klasa_id",
                               "name": "klasa_idLabel",
                               "style": {
                                 "width": "100%"
-                              }
+                              },
+                              "text": "Klasa",
+                              "type": "label"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         },
                         {
-                          "type": "col",
                           "class": "col-md-9",
                           "components": [
                             {
-                              "data": "${getKlasasForklasa_idResult}",
-                              "textProperty": "nazwa",
-                              "valueProperty": "klasa_id",
-                              "placeholder": "Choose Klasa",
                               "count": "${getKlasasForklasa_idCount}",
-                              "pageSize": "${getKlasasForklasa_idPageSize}",
-                              "type": "dropdown-datagrid",
-                              "name": "klasa_id",
-                              "style": {
-                                "width": "100%"
-                              },
+                              "data": "${getKlasasForklasa_idResult}",
+                              "emptyText": "Brak wyników do wyświetlenia.",
                               "events": {
                                 "loadData": [
                                   {
@@ -297,81 +291,96 @@
                                     "type": "invoke"
                                   }
                                 ]
-                              }
+                              },
+                              "name": "klasa_id",
+                              "pageSize": "${getKlasasForklasa_idPageSize}",
+                              "placeholder": "Wybierz klasę",
+                              "searchText": "Szukaj...",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "textProperty": "nazwa",
+                              "type": "dropdown-datagrid",
+                              "valueProperty": "klasa_id"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
-                    },
-                    {
-                      "type": "row",
+                      ],
                       "style": {
                         "marginBottom": "1rem"
                       },
+                      "type": "row"
+                    },
+                    {
                       "components": [
                         {
-                          "type": "col",
                           "class": "col-md-3",
                           "components": [
                             {
-                              "type": "label",
-                              "text": "Adres",
                               "component": "adres",
                               "name": "adresLabel",
                               "style": {
                                 "width": "100%"
-                              }
+                              },
+                              "text": "Adres",
+                              "type": "label"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         },
                         {
-                          "type": "col",
                           "class": "col-md-9",
                           "components": [
                             {
                               "maxLength": 100,
-                              "type": "textbox",
                               "name": "adres",
                               "style": {
                                 "width": "100%"
-                              }
+                              },
+                              "type": "textbox"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
                     },
                     {
-                      "type": "row",
                       "components": [
                         {
-                          "type": "col",
                           "class": "col offset-sm-3",
                           "components": [
                             {
-                              "type": "button",
+                              "buttonStyle": "primary",
                               "buttonType": "submit",
                               "icon": "save",
-                              "text": "Save",
-                              "buttonStyle": "primary"
+                              "text": "Zapisz",
+                              "type": "button"
                             },
                             {
-                              "type": "button",
                               "buttonStyle": "light",
-                              "style": {
-                                "marginLeft": "1rem"
-                              },
-                              "text": "Cancel",
                               "events": {
                                 "click": [
                                   {
                                     "type": "back"
                                   }
                                 ]
-                              }
+                              },
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Anuluj",
+                              "type": "button"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
+                      ],
+                      "type": "row"
                     }
                   ],
                   "events": {
@@ -400,13 +409,19 @@
                         "type": "invoke"
                       }
                     ]
-                  }
+                  },
+                  "name": "form0",
+                  "type": "template-form"
                 }
-              ]
+              ],
+              "type": "col"
             }
-          ]
+          ],
+          "type": "row"
         }
-      ]
+      ],
+      "container": "main",
+      "type": "content"
     }
   ],
   "events": {
@@ -518,9 +533,6 @@
       }
     ]
   },
-  "name": "Add Uczen",
-  "access": [
-    "Admin"
-  ],
-  "layout": "Main"
+  "layout": "Main",
+  "name": "Add Uczen"
 }

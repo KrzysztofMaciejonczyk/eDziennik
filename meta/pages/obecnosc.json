@@ -1,36 +1,115 @@
 {
+  "access": [
+    "Nauczyciel"
+  ],
   "components": [
     {
-      "type": "content",
-      "container": "main",
       "components": [
         {
-          "type": "heading",
           "name": "pageTitle",
           "size": "H1",
-          "text": "Obecnosc"
+          "text": "Obecności",
+          "type": "heading"
         },
         {
-          "type": "row",
           "components": [
             {
-              "type": "col",
               "class": "col-md-12",
               "components": [
                 {
-                  "name": "grid0",
-                  "allowDelete": true,
-                  "confirmDelete": true,
+                  "addText": "Dodaj obecność",
                   "allowAdd": true,
+                  "allowDelete": true,
                   "allowFiltering": true,
                   "allowMultiSorting": false,
                   "allowPaging": true,
                   "allowSorting": true,
+                  "applyFilterText": "Apply",
+                  "clearFilterText": "Clear",
+                  "columns": [
+                    {
+                      "property": "czy_byl",
+                      "title": "Obecność",
+                      "type": "boolean"
+                    },
+                    {
+                      "filterProperty": "Uczen.adres",
+                      "property": "uczen_id",
+                      "sortProperty": "Uczen.adres",
+                      "template": "${data.Uczen?.adres}",
+                      "title": "Uczeń_ID",
+                      "type": "string"
+                    },
+                    {
+                      "filterProperty": "DataOpi.opis",
+                      "property": "data_opis_id",
+                      "sortProperty": "DataOpi.opis",
+                      "template": "${data.DataOpi?.opis}",
+                      "title": "Opis_ID",
+                      "type": "string"
+                    },
+                    {
+                      "property": "ocena_id",
+                      "title": "Ocena_ID",
+                      "type": "integer"
+                    }
+                  ],
+                  "confirmDelete": true,
+                  "confirmDeleteCancelText": "Anuluj",
+                  "confirmDeleteOkText": "Ok",
+                  "confirmDeleteText": "Na pewno chcesz usunąć ten rekord?",
+                  "confirmDeleteTitle": "Potwierdź",
+                  "containsText": "Contains",
                   "count": "${getObecnoscsCount}",
                   "data": "${getObecnoscsResult}",
+                  "emptyText": "Brak wyników.",
+                  "endsWithText": "Ends with",
+                  "equalsText": "Equals",
                   "events": {
+                    "add": [
+                      {
+                        "path": "add-obecnosc",
+                        "type": "popup"
+                      }
+                    ],
+                    "delete": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to delete Obecnosc",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "Baza.deleteObecnosc",
+                        "parameters": [
+                          {
+                            "name": "ocena_id",
+                            "value": "${event.ocena_id}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "detail": "Obecnosc deleted!",
+                            "severity": "success",
+                            "summary": "Success",
+                            "type": "notify"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ],
                     "loadData": [
                       {
+                        "error": [
+                          {
+                            "detail": "Unable to load Obecnoscs",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
                         "name": "Baza.getObecnoscs",
                         "parameters": [
                           {
@@ -70,49 +149,7 @@
                             "value": "event.top != null && event.skip != null ? result['@odata.count'] : ${result.value.length}"
                           }
                         ],
-                        "type": "invoke",
-                        "error": [
-                          {
-                            "detail": "Unable to load Obecnoscs",
-                            "severity": "error",
-                            "summary": "Error",
-                            "type": "notify"
-                          }
-                        ]
-                      }
-                    ],
-                    "delete": [
-                      {
-                        "error": [
-                          {
-                            "detail": "Unable to delete Obecnosc",
-                            "severity": "error",
-                            "summary": "Error",
-                            "type": "notify"
-                          }
-                        ],
-                        "name": "Baza.deleteObecnosc",
-                        "parameters": [
-                          {
-                            "name": "ocena_id",
-                            "value": "${event.ocena_id}"
-                          }
-                        ],
-                        "then": [
-                          {
-                            "detail": "Obecnosc deleted!",
-                            "severity": "success",
-                            "summary": "Success",
-                            "type": "notify"
-                          }
-                        ],
                         "type": "invoke"
-                      }
-                    ],
-                    "add": [
-                      {
-                        "path": "add-obecnosc",
-                        "type": "popup"
                       }
                     ],
                     "rowSelect": [
@@ -128,72 +165,35 @@
                       }
                     ]
                   },
-                  "title": "",
-                  "columns": [
-                    {
-                      "property": "czy_byl",
-                      "title": "Czy Byl",
-                      "type": "boolean"
-                    },
-                    {
-                      "property": "uczen_id",
-                      "sortProperty": "Uczen.adres",
-                      "filterProperty": "Uczen.adres",
-                      "template": "${data.Uczen?.adres}",
-                      "title": "Uczen",
-                      "type": "string"
-                    },
-                    {
-                      "property": "data_opis_id",
-                      "sortProperty": "DataOpi.opis",
-                      "filterProperty": "DataOpi.opis",
-                      "template": "${data.DataOpi?.opis}",
-                      "title": "Data Opi",
-                      "type": "string"
-                    },
-                    {
-                      "property": "ocena_id",
-                      "title": "Ocena Id",
-                      "type": "integer"
-                    }
-                  ],
-                  "type": "grid",
-                  "confirmDeleteText": "Are you sure you want to delete this record?",
-                  "confirmDeleteTitle": "Confirmation",
-                  "confirmDeleteOkText": "Ok",
-                  "confirmDeleteCancelText": "Cancel",
-                  "emptyText": "No records to display.",
-                  "addText": "Add",
-                  "clearFilterText": "Clear",
-                  "applyFilterText": "Apply",
-                  "equalsText": "Equals",
-                  "notEqualsText": "Not equals",
-                  "lessThanText": "Less than",
-                  "lessThanOrEqualsText": "Less than or equals",
-                  "greaterThanText": "Greater than",
                   "greaterThanOrEqualsText": "Greater than or equals",
-                  "endsWithText": "Ends with",
-                  "containsText": "Contains",
-                  "startsWithText": "Starts with"
+                  "greaterThanText": "Greater than",
+                  "lessThanOrEqualsText": "Less than or equals",
+                  "lessThanText": "Less than",
+                  "name": "grid0",
+                  "notEqualsText": "Not equals",
+                  "startsWithText": "Starts with",
+                  "title": "",
+                  "type": "grid"
                 }
-              ]
+              ],
+              "type": "col"
             }
-          ]
+          ],
+          "type": "row"
         }
-      ]
+      ],
+      "container": "main",
+      "type": "content"
     }
   ],
   "events": {
     "load": [
       {
-        "type": "execute",
-        "code": "this.grid0.load();"
+        "code": "this.grid0.load();",
+        "type": "execute"
       }
     ]
   },
-  "name": "Obecnosc",
-  "access": [
-    "Nauczyciel"
-  ],
-  "layout": "Main"
+  "layout": "Main",
+  "name": "Obecnosc"
 }

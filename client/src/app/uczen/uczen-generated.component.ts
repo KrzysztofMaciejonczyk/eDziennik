@@ -107,15 +107,8 @@ export class UczenGenerated implements AfterViewInit, OnInit, OnDestroy {
     this.grid0.load();
   }
 
-  grid0LoadData(event: any) {
-    this.baza.getUczens(`${event.filter}`, event.top, event.skip, `${event.orderby}`, event.top != null && event.skip != null, `Uwagas,Ocenas,Obecnoscs,Osoba,Rodzic,Klasa`, null, null)
-    .subscribe((result: any) => {
-      this.getUczensResult = result.value;
-
-      this.getUczensCount = event.top != null && event.skip != null ? result['@odata.count'] : result.value.length;
-    }, (result: any) => {
-      this.notificationService.notify({ severity: "error", summary: `Error`, detail: `Unable to load Uczens` });
-    });
+  grid0Add(event: any) {
+    this.dialogService.open(AddUczenComponent, { parameters: {}, title: 'Add Uczen' });
   }
 
   grid0Delete(event: any) {
@@ -127,8 +120,15 @@ export class UczenGenerated implements AfterViewInit, OnInit, OnDestroy {
     });
   }
 
-  grid0Add(event: any) {
-    this.dialogService.open(AddUczenComponent, { parameters: {}, title: 'Add Uczen' });
+  grid0LoadData(event: any) {
+    this.baza.getUczens(`${event.filter}`, event.top, event.skip, `${event.orderby}`, event.top != null && event.skip != null, `Uwagas,Ocenas,Obecnoscs,Osoba,Rodzic,Klasa`, null, null)
+    .subscribe((result: any) => {
+      this.getUczensResult = result.value;
+
+      this.getUczensCount = event.top != null && event.skip != null ? result['@odata.count'] : result.value.length;
+    }, (result: any) => {
+      this.notificationService.notify({ severity: "error", summary: `Error`, detail: `Unable to load Uczens` });
+    });
   }
 
   grid0RowSelect(event: any) {

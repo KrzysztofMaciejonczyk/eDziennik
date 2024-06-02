@@ -4,47 +4,47 @@
       <rz-template-form #form0 (submit)="form0Submit($event)">
         <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
           <div class="col-md-3">
-            <rz-label #dataUrodzeniaLabel text="Data Urodzenia" component="data_urodzenia" [style]="{'width': '100%'}">
+            <rz-label #dataUrodzeniaLabel component="data_urodzenia" [style]="{'width': '100%'}" text="Data urodzenia">
             </rz-label>
           </div>
           <div class="col-md-9">
-            <rz-datepicker #dataUrodzenia [style]="{'width': '100%'}" name="data_urodzenia">
+            <rz-datepicker #dataUrodzenia dateFormat="mm/dd/yy" [showSeconds]="false" [style]="{'width': '100%'}" [utc]="false" name="data_urodzenia">
             </rz-datepicker>
           </div>
         </div>
         <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
           <div class="col-md-3">
-            <rz-label #osobaIdLabel text="Osoba" component="osoba_id" [style]="{'width': '100%'}">
+            <rz-label #osobaIdLabel component="osoba_id" [style]="{'width': '100%'}" text="Osoba">
             </rz-label>
           </div>
           <div class="col-md-9">
-            <rz-dropdown-datagrid #osobaId [data]="getOsobasForosoba_idResult" textProperty="imie" valueProperty="osoba_id" placeholder="Choose Osoba" [count]="getOsobasForosoba_idCount" [pageSize]="getOsobasForosoba_idPageSize" [style]="{'width': '100%'}" emptyText="No records to display." searchText="Search..." name="osoba_id" (loadData)="osoba_idLoadData($event)">
+            <rz-dropdown-datagrid #osobaId [count]="getOsobasForosoba_idCount" [data]="getOsobasForosoba_idResult" emptyText="Brak wyników do wyświetlenia." [pageSize]="getOsobasForosoba_idPageSize" placeholder="Wybierz osobę" searchText="Szukaj..." [style]="{'width': '100%'}" textProperty="imie" valueProperty="osoba_id" name="osoba_id" (loadData)="osoba_idLoadData($event)">
             </rz-dropdown-datagrid>
           </div>
         </div>
         <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
           <div class="col-md-3">
-            <rz-label #rodzicIdLabel text="Rodzic" component="rodzic_id" [style]="{'width': '100%'}">
+            <rz-label #rodzicIdLabel component="rodzic_id" [style]="{'width': '100%'}" text="Rodzic">
             </rz-label>
           </div>
           <div class="col-md-9">
-            <rz-dropdown-datagrid #rodzicId [data]="getRodzicsForrodzic_idResult" textProperty="rodzic_id" valueProperty="rodzic_id" placeholder="Choose Rodzic" [count]="getRodzicsForrodzic_idCount" [pageSize]="getRodzicsForrodzic_idPageSize" [style]="{'width': '100%'}" emptyText="No records to display." searchText="Search..." name="rodzic_id" (loadData)="rodzic_idLoadData($event)">
+            <rz-dropdown-datagrid #rodzicId [count]="getRodzicsForrodzic_idCount" [data]="getRodzicsForrodzic_idResult" emptyText="Brak wyników do wyświetlenia." [pageSize]="getRodzicsForrodzic_idPageSize" placeholder="Wybierz rodzica" searchText="Szukaj..." [style]="{'width': '100%'}" textProperty="rodzic_id" valueProperty="rodzic_id" name="rodzic_id" (loadData)="rodzic_idLoadData($event)">
             </rz-dropdown-datagrid>
           </div>
         </div>
         <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
           <div class="col-md-3">
-            <rz-label #klasaIdLabel text="Klasa" component="klasa_id" [style]="{'width': '100%'}">
+            <rz-label #klasaIdLabel component="klasa_id" [style]="{'width': '100%'}" text="Klasa">
             </rz-label>
           </div>
           <div class="col-md-9">
-            <rz-dropdown-datagrid #klasaId [data]="getKlasasForklasa_idResult" textProperty="nazwa" valueProperty="klasa_id" placeholder="Choose Klasa" [count]="getKlasasForklasa_idCount" [pageSize]="getKlasasForklasa_idPageSize" [style]="{'width': '100%'}" emptyText="No records to display." searchText="Search..." name="klasa_id" (loadData)="klasa_idLoadData($event)">
+            <rz-dropdown-datagrid #klasaId [count]="getKlasasForklasa_idCount" [data]="getKlasasForklasa_idResult" emptyText="Brak wyników do wyświetlenia." [pageSize]="getKlasasForklasa_idPageSize" placeholder="Wybierz klasę" searchText="Szukaj..." [style]="{'width': '100%'}" textProperty="nazwa" valueProperty="klasa_id" name="klasa_id" (loadData)="klasa_idLoadData($event)">
             </rz-dropdown-datagrid>
           </div>
         </div>
         <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
           <div class="col-md-3">
-            <rz-label #adresLabel text="Adres" component="adres" [style]="{'width': '100%'}">
+            <rz-label #adresLabel component="adres" [style]="{'width': '100%'}" text="Adres">
             </rz-label>
           </div>
           <div class="col-md-9">
@@ -54,9 +54,9 @@
         </div>
         <div class="row">
           <div class="col offset-sm-3">
-            <rz-button #button1 buttonType="submit" icon="save" text="Save" buttonStyle="primary">
+            <rz-button #button1 buttonStyle="primary" buttonType="submit" icon="save" text="Zapisz">
             </rz-button>
-            <rz-button #button2 buttonStyle="light" [style]="{'marginLeft': '1rem'}" text="Cancel" (click)="button2Click($event)">
+            <rz-button #button2 buttonStyle="light" [style]="{'marginLeft': '1rem'}" text="Anuluj" (click)="button2Click($event)">
             </rz-button>
           </div>
         </div>

@@ -107,15 +107,8 @@ export class OcenaGenerated implements AfterViewInit, OnInit, OnDestroy {
     this.grid0.load();
   }
 
-  grid0LoadData(event: any) {
-    this.baza.getOcenas(`${event.filter}`, event.top, event.skip, `${event.orderby}`, event.top != null && event.skip != null, `Nauczyciel,Uczen,DataOpi`, null, null)
-    .subscribe((result: any) => {
-      this.getOcenasResult = result.value;
-
-      this.getOcenasCount = event.top != null && event.skip != null ? result['@odata.count'] : result.value.length;
-    }, (result: any) => {
-      this.notificationService.notify({ severity: "error", summary: `Error`, detail: `Unable to load Ocenas` });
-    });
+  grid0Add(event: any) {
+    this.dialogService.open(AddOcenaComponent, { parameters: {}, title: 'Add Ocena' });
   }
 
   grid0Delete(event: any) {
@@ -127,8 +120,15 @@ export class OcenaGenerated implements AfterViewInit, OnInit, OnDestroy {
     });
   }
 
-  grid0Add(event: any) {
-    this.dialogService.open(AddOcenaComponent, { parameters: {}, title: 'Add Ocena' });
+  grid0LoadData(event: any) {
+    this.baza.getOcenas(`${event.filter}`, event.top, event.skip, `${event.orderby}`, event.top != null && event.skip != null, `Nauczyciel,Uczen,DataOpi`, null, null)
+    .subscribe((result: any) => {
+      this.getOcenasResult = result.value;
+
+      this.getOcenasCount = event.top != null && event.skip != null ? result['@odata.count'] : result.value.length;
+    }, (result: any) => {
+      this.notificationService.notify({ severity: "error", summary: `Error`, detail: `Unable to load Ocenas` });
+    });
   }
 
   grid0RowSelect(event: any) {

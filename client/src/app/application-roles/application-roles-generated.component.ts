@@ -106,6 +106,10 @@ export class ApplicationRolesGenerated implements AfterViewInit, OnInit, OnDestr
     });
   }
 
+  grid0Add(event: any) {
+    this.dialogService.open(AddApplicationRoleComponent, { parameters: {}, title: 'Add Application Role' });
+  }
+
   grid0Delete(event: any) {
     this.security.deleteRole(`${event.Id}`)
     .subscribe((result: any) => {
@@ -113,9 +117,5 @@ export class ApplicationRolesGenerated implements AfterViewInit, OnInit, OnDestr
     }, (result: any) => {
       this.notificationService.notify({ severity: "error", summary: `Cannot delete role`, detail: `${result.error.message}` });
     });
-  }
-
-  grid0Add(event: any) {
-    this.dialogService.open(AddApplicationRoleComponent, { parameters: {}, title: 'Add Application Role' });
   }
 }
